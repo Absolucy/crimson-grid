@@ -286,6 +286,8 @@ SUBSYSTEM_DEF(garbage)
 			/client,
 			/datum/controller,
 			/datum/parsed_map,
+			// can't find these yet, avoid them to prevent lagspikes
+			/mob/living/carbon/human,
 		)
 	++delslasttick
 	++totaldels
