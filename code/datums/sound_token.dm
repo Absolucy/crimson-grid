@@ -101,7 +101,7 @@
 	if(!isnull(listeners[listener_mob]))
 		return TRUE
 
-	if(!listener_mob.client || isnewplayer(listener_mob))
+	if(!listener_mob?.client || isnewplayer(listener_mob))
 		return FALSE
 
 	if(allowed_listeners && !allowed_listeners[listener_mob])
@@ -117,6 +117,8 @@
 
 /// Remove a listener from the sound.
 /datum/sound_token/proc/remove_listener(mob/listener_mob)
+	if(isnull(listener_mob))
+		return
 
 	listeners -= listener_mob
 	LAZYREMOVE(listener_mob.sound_tokens, src)
@@ -127,7 +129,7 @@
 /datum/sound_token/proc/update_listener(mob/listener_mob, update_sound = TRUE)
 	if(QDELETED(src))
 		return
-	if(isnull(listeners[listener_mob]))
+	if(isnull(listener_mob) || isnull(listeners[listener_mob]))
 		return
 
 	var/turf/source_turf = get_turf(source)

@@ -76,7 +76,7 @@
 
 	animate(trickery_image, alpha = target_alpha, time = animation_time)
 
-	RegisterSignal(fool, COMSIG_MOB_LOGOUT, PROC_REF(on_client_disconnect))
+	RegisterSignal(fool, COMSIG_MOB_LOGOUT, PROC_REF(on_client_disconnect), override = TRUE) // CRIMSON GRID EDIT - shut this runtime up
 
 ///Remove the screen object and make us appear solid to ourselves again
 /datum/component/seethrough_mob/proc/untrick_mob()
