@@ -93,11 +93,6 @@ multiple modular subtrees with behaviors
 	set_movement_target(type, null)
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
-	// CRIMSON GRID START - what the fuck
-	for(var/z, controllers in GLOB.ai_controllers_by_zlevel)
-		var/list/z_controllers = controllers
-		z_controllers -= src
-	// CRIMSON GRID END
 	return ..()
 
 ///Sets the current movement target, with an optional param to override the movement behavior
