@@ -1,8 +1,8 @@
 /datum/job/vampire/doctor
 	title = JOB_DOCTOR
 	faction = FACTION_CITY
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 9 // CRIMSON GRID EDIT - 4->9
+	spawn_positions = 9 // CRIMSON GRID EDIT - 4->9
 	supervisors = "the Clinic Director"
 	exp_required_type_department = EXP_TYPE_CLINIC
 	config_tag = "DOCTOR"
