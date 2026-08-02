@@ -8168,6 +8168,7 @@
 #include "modular_vcg\modules\lobby_join_stuff\code\change_character_slot.dm"
 #include "modular_vcg\modules\looc\code\looc_preference.dm"
 #include "modular_vcg\modules\ooc_pronouns\code\ooc.dm"
+#include "modular_vcg\modules\phone_examine\code\_phone.dm"
 #include "modular_vcg\modules\plexora\code\_plexora.dm"
 #include "modular_vcg\modules\plexora\code\config.dm"
 #include "modular_vcg\modules\plexora\code\discord.dm"
