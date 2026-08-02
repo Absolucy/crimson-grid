@@ -1,4 +1,4 @@
-#define MAX_NAVIGATE_RANGE 125
+#define MAX_NAVIGATE_RANGE 255 // CRIMSON GRID EDIT - ORIGINAL: #define MAX_NAVIGATE_RANGE 125
 
 /mob/living
 	/// Cooldown of the navigate() verb.
