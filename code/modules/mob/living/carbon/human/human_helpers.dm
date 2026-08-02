@@ -92,7 +92,7 @@
 /mob/living/carbon/human/proc/is_face_obscured()
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
 		return TRUE //We're Unknown, no face information for you
-	if(obscured_slots & HIDEFACE)
+	if((obscured_slots & HIDEFACE) && !client?.prefs?.read_preference(/datum/preference/toggle/show_identity_when_masked)) // CRIMSON GRID EDIT - respect show_flavor_text_when_masked - ORIGINAL: if(obscured_slots & HIDEFACE)
 		return TRUE
 	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
 	if(isnull(head) || HAS_TRAIT(head, TRAIT_DISFIGURED) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) //disfigured. use id-name if possible
