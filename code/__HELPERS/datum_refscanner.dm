@@ -1,6 +1,6 @@
 /datum/log_category/refscanner
 	category = "refscanner"
-
+	debugger_visible = TRUE
 
 /* This comment bypasses grep checks */ /var/__refscanner
 #define REFSCANNER_DLL (world.system_type == MS_WINDOWS ? "datum_refscanner.dll" : (__refscanner ||= __detect_auxtools("datum_refscanner")))
