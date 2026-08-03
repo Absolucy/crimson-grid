@@ -109,6 +109,39 @@ export type ListGroupRow = {
   elements: Exact;
   assoc_nodes: Exact;
   bytes: Exact;
+  /**
+   * How many empty lists this pair is answerable for: the larger of
+   * `empty_direct` and `empty_lists`, and the order `empty_groups` arrives in.
+   *
+   * Shipped rather than recomputed here, so a re-sort on this column lands in
+   * the same order the extension chose. Neither counter alone sees every row:
+   * a var holding one list full of 8,000 empties has `empty_direct` of 0, and
+   * a var holding a shared empty has `empty_lists` of 0.
+   */
+  empty_rank: Exact;
+  /**
+   * Empty lists rolled up, nested ones included. Counterpart of `lists`. Below
+   * `empty_direct` means some are held more than once, so their bytes went to
+   * the shared bucket instead of to this var.
+   */
+  empty_lists: Exact;
+  /**
+   * How many instances hold an empty list directly. Refcount-independent, like
+   * `direct_lists`, so this is the column that answers "which var has the most
+   * empty lists" without a caveat attached.
+   */
+  empty_direct: Exact;
+  /**
+   * Bytes from the rolled-up empties. Can read `'0'` against a non-zero
+   * `empty_direct`, for the same reason `bytes` can against `direct_lists`.
+   */
+  empty_bytes: Exact;
+  /**
+   * Elements those empties still have room for. Non-zero means lists left
+   * holding a vector remnant, typically 4 slots each from having been emptied
+   * an element at a time rather than in one Cut().
+   */
+  empty_capacity: Exact;
 };
 
 /** What the rollup could not charge to any row. */
@@ -214,25 +247,12 @@ export type Footer = {
   storage?: StorageRow[];
 };
 
-export type Census = {
+export type Census = ListsHeader & {
   ok: BooleanLike;
   build: number;
   total_instances: Exact;
   total_self_bytes: Exact;
   types_total: Exact;
-  lists_total: Exact;
-  list_bytes: Exact;
-  /** Lists no named root reaches. High is either a leak or a missed storage class. */
-  orphan_lists: Exact;
-  /**
-   * Lists something was wrong with. Non-zero is a coverage gap.
-   *
-   * Empty lists are not in here - see `skipped`, which is the full breakdown.
-   */
-  unwalked_lists: Exact;
-  skipped: SkipCounts;
-  /** Distinct type vars holding at least one list. */
-  groups_total: Exact;
   var_rows_total: Exact;
   var_bytes: Exact;
   vars_total: Exact;
@@ -246,20 +266,69 @@ export type Census = {
   vars_truncated: BooleanLike;
 };
 
-export type ListsReport = {
-  ok: BooleanLike;
-  build: number;
+/**
+ * The lists section's totals.
+ *
+ * The extension flattens these into both the lists report and the census, so
+ * they are declared once here rather than spelled out in each - the two had
+ * already had to move together twice.
+ */
+export type ListsHeader = {
   lists_total: Exact;
   list_bytes: Exact;
+  /** Lists no named root reaches. High is either a leak or a missed storage class. */
   orphan_lists: Exact;
-  /** Failures only. `skipped` is the full breakdown, empty lists included. */
+  /**
+   * Lists something was wrong with. Non-zero is a coverage gap.
+   *
+   * Empty lists are not in here - see `skipped`, which is the full breakdown.
+   */
   unwalked_lists: Exact;
   skipped: SkipCounts;
+  /** Distinct type vars holding at least one list. */
   groups_total: Exact;
+  /**
+   * What every empty list costs: 24 bytes of header each, plus any vector
+   * capacity they kept. `skipped.empty` says how many; this says why to care.
+   *
+   * Excludes the 4-byte list-table slot each of them also occupies - that is
+   * in `footer.table_pointer_bytes`.
+   */
+  empty_bytes: Exact;
+  /** Of `empty_bytes`, the part that is retained capacity rather than header. */
+  empty_capacity_bytes: Exact;
+  /** Empty lists that kept a vector: cleared, rather than born empty. */
+  empty_with_capacity: Exact;
+  /** Elements those lists still have room for. */
+  empty_capacity_slots: Exact;
+  /**
+   * Empty lists a named type var holds directly, summed over every pair rather
+   * than over the capped rows. `skipped.empty` minus this is how many are held
+   * by no named var - nested in another list, in a global, or orphaned.
+   */
+  empty_attributed: Exact;
+  /**
+   * Pairs holding at least one empty list - how many rows `empty_groups` has
+   * before its cap. `groups_total` counts every pair, so it overstates this.
+   */
+  empty_groups_total: Exact;
+};
+
+export type ListsReport = ListsHeader & {
+  ok: BooleanLike;
+  build: number;
   lists: ListRow[];
   lists_truncated: BooleanLike;
   list_groups: ListGroupRow[];
   list_groups_truncated: BooleanLike;
+  /**
+   * The same rows, filtered to vars holding at least one empty list and
+   * ordered by how many. Its own array because `list_groups` is biggest-first
+   * and cuts its tail, and a var holding two hundred bare 24-byte empties
+   * lives in exactly that tail.
+   */
+  empty_groups: ListGroupRow[];
+  empty_groups_truncated: BooleanLike;
   unattributed: Unattributed;
 };
 

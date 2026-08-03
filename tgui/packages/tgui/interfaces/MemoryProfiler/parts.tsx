@@ -17,8 +17,8 @@ import {
   LIST_FAILURES,
   LIST_STATUS_NOTE,
   type ListFailure,
+  type ListsHeader,
   type ReportMeta,
-  type SkipCounts,
   type Unattributed,
 } from './types';
 
@@ -146,14 +146,26 @@ const FAILURE_LABEL: Record<ListFailure, string> = {
  * corrupt slots. The three real failures only appear when non-zero, so a healthy
  * world shows one calm line instead of three red zeroes.
  */
-export function SkipBreakdown(props: { skipped: SkipCounts }) {
-  const { skipped } = props;
+export function SkipBreakdown(props: { header: ListsHeader }) {
+  const { header } = props;
+  const { skipped } = header;
 
   return (
     <>
+      {/* Carries bytes because "holds nothing" reads as "costs nothing", and
+          the lists cleared without releasing their vector are the ones anyone
+          reading this panel would actually want to go fix. */}
       <LabeledList.Item label="Empty">
-        {count(skipped.empty)} lists hold nothing. Normal - they are counted,
-        they just have no contents to attribute.
+        {count(skipped.empty)} lists hold nothing, costing{' '}
+        {bytes(header.empty_bytes)}
+        {exact(header.empty_with_capacity) > 0 && (
+          <>
+            {' - '}
+            {count(header.empty_with_capacity)} of them still hold room for{' '}
+            {count(header.empty_capacity_slots)} elements
+          </>
+        )}
+        . Having them is normal; the ones keeping capacity may not be.
       </LabeledList.Item>
       {LIST_FAILURES.filter((status) => exact(skipped[status]) > 0).map(
         (status) => (

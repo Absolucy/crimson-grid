@@ -68,7 +68,7 @@ export function Overview() {
                       >
                         {count(census.orphan_lists)} lists no named root reaches
                       </LabeledList.Item>
-                      <SkipBreakdown skipped={census.skipped} />
+                      <SkipBreakdown header={census} />
                       <LabeledList.Item label="Var rows">
                         {count(census.var_rows_total)} rows across{' '}
                         {count(census.vars_total)} names, costing{' '}

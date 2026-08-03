@@ -108,9 +108,14 @@ export function PerListTable(props: { report: ListsReport }) {
   const { sort, toggle } = useSort<SortKey>('bytes');
 
   const rows = useMemo(() => {
+    // `walk_status` is in the haystack so typing `empty` narrows to the lists
+    // holding nothing. Only the ones big enough to make this page appear here,
+    // since it is capped and sorted by size - the Empty view is where they are
+    // counted properly - but being able to pick them out of a page you are
+    // already looking at is worth one word in the search.
     const searchFn = createSearch(
       search,
-      (row: ListRow) => `${row.owner} ${row.owner_site}`,
+      (row: ListRow) => `${row.owner} ${row.owner_site} ${row.walk_status}`,
     );
     const sorted = sortBy(report.lists.filter(searchFn), [
       (row) => sortValue(row, sort.key),
@@ -144,7 +149,7 @@ export function PerListTable(props: { report: ListsReport }) {
             expensive
             query={search}
             onSearch={setSearch}
-            placeholder="Filter owners, or type a site like orphan..."
+            placeholder="Filter owners, or type a site or status like orphan, empty..."
             style={{ width: '24rem' }}
           />
         }

@@ -11,6 +11,7 @@ import { exhaustiveCheck } from 'tgui-core/exhaustive';
 
 import { useBackend } from '../../backend';
 import { ByVarTable } from './ByVarTable';
+import { EmptyListsTable } from './EmptyListsTable';
 import { bytes, count, exact, metaFor } from './format';
 import { PerListTable } from './PerListTable';
 import { EmptyState, ReportHeader, SkipBreakdown } from './parts';
@@ -21,6 +22,12 @@ enum VIEW {
   PerList = 'per_list',
   /** One row per type var, summed over every instance of that type. */
   ByVar = 'by_var',
+  /**
+   * The same type vars, but only the empty lists, ordered by how many. Neither
+   * view above can show these: both sort by size and cut their tail, and an
+   * empty list is the smallest row a world has.
+   */
+  Empty = 'empty',
 }
 
 function renderView(view: VIEW, report: ListsReport) {
@@ -29,6 +36,8 @@ function renderView(view: VIEW, report: ListsReport) {
       return <PerListTable report={report} />;
     case VIEW.ByVar:
       return <ByVarTable report={report} />;
+    case VIEW.Empty:
+      return <EmptyListsTable report={report} />;
     default:
       return exhaustiveCheck(view);
   }
@@ -95,7 +104,7 @@ export function ListsTab() {
                   {count(lists_report.orphan_lists)} reached by no named root,
                   either a real leak or a storage class this walk misses
                 </LabeledList.Item>
-                <SkipBreakdown skipped={lists_report.skipped} />
+                <SkipBreakdown header={lists_report} />
               </LabeledList>
             </Section>
           </Stack.Item>
@@ -116,6 +125,13 @@ export function ListsTab() {
                 onClick={() => setView(VIEW.ByVar)}
               >
                 By type var ({count(lists_report.groups_total)})
+              </Tabs.Tab>
+              <Tabs.Tab
+                icon="ghost"
+                selected={view === VIEW.Empty}
+                onClick={() => setView(VIEW.Empty)}
+              >
+                Empty ({count(lists_report.skipped.empty)})
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
