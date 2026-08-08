@@ -549,7 +549,7 @@
 	last_pos["y"] = y
 
 /obj/darkpack_car/process(seconds_per_tick)
-	car_move()
+	return car_move()
 
 /obj/darkpack_car/proc/car_move()
 	speed_in_pixels = max(speed_in_pixels, -64)
