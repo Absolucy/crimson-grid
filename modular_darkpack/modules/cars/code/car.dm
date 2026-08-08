@@ -824,13 +824,3 @@
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX
-#undef -128
-#undef 128
-#undef 60
-#undef 2
-#undef 6
-#undef 8
-#undef 20
-#undef 33
-#undef 3
-#undef 12
