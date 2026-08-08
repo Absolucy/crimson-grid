@@ -598,19 +598,19 @@
 		// Here lies the Car Backwards Long Jump - 2021-2025
 		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, 3)
 
-		handle_npc_dodge(check_turf, true_movement_angle)
+		var/list/in_line = get_line(src, check_turf)
+		handle_npc_dodge(check_turf, true_movement_angle, in_line)
 
 		var/last_x_a = last_x * ICON_SIZE_X + last_x_pix
 		var/last_y_a = last_y * ICON_SIZE_Y + last_y_pix
 
 		var/turf/hit_turf
-		var/list/in_line = get_line(src, check_turf)
-		for(var/turf/T in in_line)
+		for(var/turf/T as anything in in_line)
 			if(debug_car)
 				// For visualising path of car.
 				new /obj/effect/temp_visual/telegraphing/car(T)
 
-			if(hit_turf == get_turf(src))
+			if(hit_turf == target_turf)
 				continue // Avoid spam bumping and trapping us inside of a dense turf.
 
 			var/dist_to_hit = get_dist_in_pixels(last_x_a, last_y_a, T.x * ICON_SIZE_X, T.y * ICON_SIZE_Y)
@@ -640,18 +640,23 @@
 				moved_y = max((hy+ICON_SIZE_Y)-(last_y_a), moved_y)
 			else if(last_y_a < hy)
 				moved_y = min((hy-ICON_SIZE_Y)-(last_y_a), moved_y)
-	var/turf/west_turf = get_step(src, WEST)
-	if(west_turf.is_blocked_turf())
-		moved_x = max(-8-last_x_pix, moved_x)
-	var/turf/east_turf = get_step(src, EAST)
-	if(east_turf.is_blocked_turf())
-		moved_x = min(8-last_x_pix, moved_x)
-	var/turf/north_turf = get_step(src, NORTH)
-	if(north_turf.is_blocked_turf())
-		moved_y = min(8-last_y_pix, moved_y)
-	var/turf/south_turf = get_step(src, SOUTH)
-	if(south_turf.is_blocked_turf())
-		moved_y = max(-8-last_y_pix, moved_y)
+	if(moved_x < 0)
+		var/turf/west_turf = get_step(src, WEST)
+		if(west_turf.is_blocked_turf())
+			moved_x = max(-8-last_x_pix, moved_x)
+	else if(moved_x > 0)
+		var/turf/east_turf = get_step(src, EAST)
+		if(east_turf.is_blocked_turf())
+			moved_x = min(8-last_x_pix, moved_x)
+
+	if(moved_y > 0)
+		var/turf/north_turf = get_step(src, NORTH)
+		if(north_turf.is_blocked_turf())
+			moved_y = min(8-last_y_pix, moved_y)
+	else if(moved_y < 0)
+		var/turf/south_turf = get_step(src, SOUTH)
+		if(south_turf.is_blocked_turf())
+			moved_y = max(-8-last_y_pix, moved_y)
 
 	move_car_riders(moved_x, moved_y)
 
@@ -661,8 +666,8 @@
 	if(bump_target)
 		Bump(bump_target)
 
-/obj/darkpack_car/proc/handle_npc_dodge(turf/target, angle)
-	for(var/turf/T in get_line(src, target))
+/obj/darkpack_car/proc/handle_npc_dodge(turf/target, angle, turf/line)
+	for(var/turf/T as anything in line)
 		var/list/unpassable = T.get_blocking_contents(FALSE, src)
 		if(!length(unpassable))
 			continue
