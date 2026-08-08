@@ -565,12 +565,17 @@
 		if(speed_in_pixels == 0 && !light_on)
 			return PROCESS_KILL
 
-	forceMove(locate(last_pos["x"], last_pos["y"], z))
+	var/last_x = last_pos["x"]
+	var/last_y = last_pos["y"]
+	var/last_x_pix = last_pos["x_pix"]
+	var/last_y_pix = last_pos["y_pix"]
+
+	forceMove(locate(last_x, last_y, z))
 	if(on)
 		new /obj/effect/temp_visual/car(loc)
 
-	pixel_x = last_pos["x_pix"]
-	pixel_y = last_pos["y_pix"]
+	pixel_x = last_x_pix
+	pixel_y = last_y_pix
 	var/moved_x = round(sin(used_vector)*used_speed)
 	var/moved_y = round(cos(used_vector)*used_speed)
 	var/bump_target
@@ -584,6 +589,9 @@
 
 		handle_npc_dodge(check_turf, true_movement_angle)
 
+		var/last_x_a = last_x * ICON_SIZE_X + last_x_pix
+		var/last_y_a = last_y * ICON_SIZE_Y + last_y_pix
+
 		var/turf/hit_turf
 		var/list/in_line = get_line(src, check_turf)
 		for(var/turf/T in in_line)
@@ -594,11 +602,11 @@
 			if(hit_turf == get_turf(src))
 				continue // Avoid spam bumping and trapping us inside of a dense turf.
 
-			var/dist_to_hit = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], T.x*32, T.y*32)
+			var/dist_to_hit = get_dist_in_pixels(last_x_a, last_y_a, T.x * ICON_SIZE_X, T.y * ICON_SIZE_Y)
 			if(dist_to_hit <= abs(used_speed))
 				var/list/stuff = T.get_blocking_contents(FALSE, src)
 				if(length(stuff))
-					if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
+					if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_x_a, last_y_a, hit_turf.x * ICON_SIZE_X, hit_turf.y * ICON_SIZE_Y))
 						hit_turf = T
 						if(debug_car)
 							// For visualising hit tile of car.
@@ -606,35 +614,37 @@
 		if(hit_turf)
 			if(COOLDOWN_FINISHED(src, impact_delay))
 				bump_target = pick(hit_turf.get_blocking_contents(FALSE, src))
+			var/hx = hit_turf.x * ICON_SIZE_X
+			var/hy = hit_turf.y * ICON_SIZE_Y
 			// to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
 			// var/bearing = get_angle_raw(x, y, pixel_x, pixel_y, hit_turf.x, hit_turf.y, 0, 0)
-			var/actual_distance = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32)-32
+			var/actual_distance = get_dist_in_pixels(last_x_a, last_y_a, hx, hy) - ICON_SIZE_ALL
 			moved_x = round(sin(true_movement_angle)*actual_distance)
 			moved_y = round(cos(true_movement_angle)*actual_distance)
-			if(last_pos["x"]*32+last_pos["x_pix"] > hit_turf.x*32)
-				moved_x = max((hit_turf.x*32+32)-(last_pos["x"]*32+last_pos["x_pix"]), moved_x)
-			if(last_pos["x"]*32+last_pos["x_pix"] < hit_turf.x*32)
-				moved_x = min((hit_turf.x*32-32)-(last_pos["x"]*32+last_pos["x_pix"]), moved_x)
-			if(last_pos["y"]*32+last_pos["y_pix"] > hit_turf.y*32)
-				moved_y = max((hit_turf.y*32+32)-(last_pos["y"]*32+last_pos["y_pix"]), moved_y)
-			if(last_pos["y"]*32+last_pos["y_pix"] < hit_turf.y*32)
-				moved_y = min((hit_turf.y*32-32)-(last_pos["y"]*32+last_pos["y_pix"]), moved_y)
+			if(last_x_a > hx)
+				moved_x = max((hx+ICON_SIZE_X)-(last_x_a), moved_x)
+			else if(last_x_a < hx)
+				moved_x = min((hx-ICON_SIZE_X)-(last_x_a), moved_x)
+			if(last_y_a > hy)
+				moved_y = max((hy+ICON_SIZE_Y)-(last_y_a), moved_y)
+			else if(last_y_a < hy)
+				moved_y = min((hy-ICON_SIZE_Y)-(last_y_a), moved_y)
 	var/turf/west_turf = get_step(src, WEST)
 	if(west_turf.is_blocked_turf())
-		moved_x = max(-8-last_pos["x_pix"], moved_x)
+		moved_x = max(-8-last_x_pix, moved_x)
 	var/turf/east_turf = get_step(src, EAST)
 	if(east_turf.is_blocked_turf())
-		moved_x = min(8-last_pos["x_pix"], moved_x)
+		moved_x = min(8-last_x_pix, moved_x)
 	var/turf/north_turf = get_step(src, NORTH)
 	if(north_turf.is_blocked_turf())
-		moved_y = min(8-last_pos["y_pix"], moved_y)
+		moved_y = min(8-last_y_pix, moved_y)
 	var/turf/south_turf = get_step(src, SOUTH)
 	if(south_turf.is_blocked_turf())
-		moved_y = max(-8-last_pos["y_pix"], moved_y)
+		moved_y = max(-8-last_y_pix, moved_y)
 
 	move_car_riders(moved_x, moved_y)
 
-	animate(src, pixel_x = last_pos["x_pix"]+moved_x, pixel_y = last_pos["y_pix"]+moved_y, SScarpool.wait, 1)
+	animate(src, pixel_x = last_x_pix+moved_x, pixel_y = last_y_pix+moved_y, SScarpool.wait, 1)
 	update_last_pos(moved_x, moved_y)
 
 	if(bump_target)
