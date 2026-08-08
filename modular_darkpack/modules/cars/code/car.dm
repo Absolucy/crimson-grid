@@ -571,7 +571,7 @@
 	var/last_y_pix = last_pos["y_pix"]
 
 	forceMove(locate(last_x, last_y, z))
-	if(on)
+	if(on && used_speed != 0)
 		new /obj/effect/temp_visual/car(loc)
 
 	pixel_x = last_x_pix
