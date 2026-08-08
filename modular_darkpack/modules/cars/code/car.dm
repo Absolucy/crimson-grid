@@ -485,7 +485,7 @@
 
 /obj/darkpack_car/Bump(atom/bumped_atom)
 	. = ..()
-	var/prev_speed = round(abs(speed_in_pixels)/4)
+	var/prev_speed = round(abs(speed_in_pixels)/8)
 	if(!prev_speed)
 		return
 
@@ -558,19 +558,20 @@
 	last_turf = loc
 
 /obj/darkpack_car/process(seconds_per_tick)
-	return car_move()
+	return car_move(seconds_per_tick)
 
-/obj/darkpack_car/proc/car_move()
-	speed_in_pixels = max(speed_in_pixels, -64)
+/obj/darkpack_car/proc/car_move(seconds_per_tick)
+	speed_in_pixels = max(speed_in_pixels, -128)
 	var/used_vector = movement_vector
-	var/used_speed = speed_in_pixels
+	var/used_speed = round(speed_in_pixels * seconds_per_tick, 1)
 
 	if(gas <= 0)
 		stop_engine()
 		if(driver)
 			to_chat(driver, span_warning("No fuel in the tank!"))
 	if(!on || !driver)
-		speed_in_pixels = (speed_in_pixels < 0 ? -1 : 1) * max(abs(speed_in_pixels) - 15, 0)
+		var/coast_decay = 60 * seconds_per_tick
+		speed_in_pixels = (speed_in_pixels < 0 ? -1 : 1) * max(abs(speed_in_pixels) - coast_decay, 0)
 		if(speed_in_pixels == 0 && !light_on)
 			return PROCESS_KILL
 
@@ -595,8 +596,11 @@
 		if(used_speed < 0)
 			true_movement_angle = SIMPLIFY_DEGREES(used_vector+180)
 
+		// Reach has to cover whatever we cover this tick, or a fast car tunnels straight through walls.
+		var/lookahead = clamp(CEILING(abs(used_speed) / 33, 1) + 1, 3, 12)
+
 		// Here lies the Car Backwards Long Jump - 2021-2025
-		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, 3)
+		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, lookahead)
 
 		var/list/in_line = get_line(src, check_turf)
 		handle_npc_dodge(check_turf, true_movement_angle, in_line)
@@ -729,7 +733,7 @@
 		return
 	if(!ISADVANCEDTOOLUSER(user))
 		return
-	var/turn_speed = min(abs(speed_in_pixels) / 10, 3)
+	var/turn_speed = min(abs(speed_in_pixels) / 20, 3)
 	switch(direction)
 		if(NORTH)
 			controlling(1, 0)
@@ -755,26 +759,27 @@
 		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true)
 		apply_vector_angle()
 	if(adjusting_speed)
+		var/top_speed = stage * 128
 		if(on)
 			if(adjusting_speed > 0 && speed_in_pixels <= 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = speed_in_pixels+adjusting_speed*3
+				speed_in_pixels = speed_in_pixels+adjusting_speed*6
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = speed_in_pixels+adjusting_speed*3
+				speed_in_pixels = speed_in_pixels+adjusting_speed*6
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else
-				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
+				speed_in_pixels = clamp(speed_in_pixels+adjusting_speed*stage*2, -top_speed, top_speed)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
 		else
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*3)
+				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*6)
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
+				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*6)
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 
 /obj/darkpack_car/proc/apply_vector_angle()
@@ -812,3 +817,13 @@
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX
+#undef -128
+#undef 128
+#undef 60
+#undef 2
+#undef 6
+#undef 8
+#undef 20
+#undef 33
+#undef 3
+#undef 12
