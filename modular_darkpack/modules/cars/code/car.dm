@@ -63,6 +63,7 @@
 	MAP_SWITCH(pixel_y = 0, pixel_y = -32)
 
 	glide_size = 96
+	animate_movement = NO_STEPS
 
 	light_system = OVERLAY_LIGHT_DIRECTIONAL
 	light_color = COLOR_LIGHT_ORANGE
@@ -586,8 +587,10 @@
 	if(on && used_speed != 0)
 		new /obj/effect/temp_visual/car(loc)
 
-	pixel_x = last_x_pix
-	pixel_y = last_y_pix
+	if(pixel_x != last_x_pix)
+		pixel_x = last_x_pix
+	if(pixel_y != last_y_pix)
+		pixel_y = last_y_pix
 	var/moved_x = round(sin(used_vector)*used_speed)
 	var/moved_y = round(cos(used_vector)*used_speed)
 	var/bump_target
@@ -662,9 +665,9 @@
 		if(south_turf.is_blocked_turf())
 			moved_y = max(-8-last_y_pix, moved_y)
 
-	move_car_riders(moved_x, moved_y)
+	move_car_riders(moved_x, moved_y, seconds_per_tick)
 
-	animate(src, pixel_x = last_x_pix+moved_x, pixel_y = last_y_pix+moved_y, SScarpool.wait, 1)
+	animate(src, pixel_x = last_x_pix+moved_x, pixel_y = last_y_pix+moved_y, seconds_per_tick SECONDS, 1)
 	update_last_pos(moved_x, moved_y)
 
 	if(bump_target)
@@ -693,15 +696,18 @@
 						NPC.realistic_say(pick(NPC.socialrole.car_dodged))
 
 /// Moves the client cameras of living inside of the car.
-/obj/darkpack_car/proc/move_car_riders(moved_x, moved_y)
+/obj/darkpack_car/proc/move_car_riders(moved_x, moved_y, seconds_per_tick)
+	var/target_x = last_pixel_x + moved_x * 2
+	var/target_y = last_pixel_y + moved_y * 2
 	for(var/mob/living/rider in src)
-		if(rider.client)
-			rider.client.pixel_x = forward_pixel_x
-			rider.client.pixel_y = forward_pixel_y
-			animate(rider.client, \
-				pixel_x = last_pixel_x + moved_x * 2, \
-				pixel_y = last_pixel_y + moved_y * 2, \
-				SScarpool.wait, 1)
+		var/client/rider_client = rider.client
+		if(!rider_client)
+			continue
+		if(rider_client.pixel_x != forward_pixel_x)
+			rider_client.pixel_x = forward_pixel_x
+		if(rider_client.pixel_y != forward_pixel_y)
+			rider_client.pixel_y = forward_pixel_y
+		animate(rider_client, pixel_x = target_x, pixel_y = target_y, seconds_per_tick SECONDS, 1)
 
 /obj/darkpack_car/proc/update_last_pos(moved_x, moved_y)
 	// Step 1: Move pixel and forward positions
@@ -784,7 +790,8 @@
 
 /obj/darkpack_car/proc/apply_vector_angle()
 	var/new_dir = angle2dir(movement_vector)
-	setDir(new_dir)
+	if(new_dir != dir)
+		setDir(new_dir)
 
 	var/turn_state = round(SIMPLIFY_DEGREES(movement_vector + 22.5) / 45)
 	var/minus_angle = turn_state * 45
