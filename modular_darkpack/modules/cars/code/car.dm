@@ -72,7 +72,14 @@
 
 	var/movement_vector = 0 //0-359 degrees
 	var/speed_in_pixels = 0 // 16 pixels (turf is 2x2m) = 1 meter per 1 SECOND (process fire). Minus equals to reverse, max should be 444
-	var/last_pos = list("x" = 0, "y" = 0, "x_pix" = 0, "y_pix" = 0, "x_frwd" = 0, "y_frwd" = 0)
+	var/last_turf_x = 0
+	var/last_turf_y = 0
+	var/last_pixel_x = 0
+	var/last_pixel_y = 0
+	var/forward_pixel_x = 0
+	var/forward_pixel_y = 0
+
+	var/turf/last_turf
 
 	max_integrity = 400
 	integrity_failure = 0.25
@@ -143,8 +150,8 @@
 	*/
 
 	gas = rand(100, CAR_TANK_MAX)
-	last_pos["x"] = x
-	last_pos["y"] = y
+	last_turf_x = x
+	last_turf_y = y
 	movement_vector = dir2angle(dir)
 
 	add_overlay(image(icon = src.icon, icon_state = src.icon_state, pixel_x = -32, pixel_y = -32))
@@ -156,6 +163,7 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/darkpack_car/Destroy()
+	last_turf = null
 	STOP_PROCESSING(SScarpool, src)
 	QDEL_NULL(engine_sound_loop)
 	QDEL_NULL(trunk)
@@ -485,10 +493,10 @@
 		COOLDOWN_START(src, impact_delay, 0.75 SECONDS)
 		/*
 		speed_in_pixels = 0
-		last_pos["x_pix"] = 0
-		last_pos["y_pix"] = 0
-		last_pos["x_frwd"] = 0
-		last_pos["y_frwd"] = 0
+		last_pixel_x = 0
+		last_pixel_y = 0
+		forward_pixel_x = 0
+		forward_pixel_y = 0
 		*/
 		return
 
@@ -521,8 +529,8 @@
 		var/mob/living/carbon/human/npc/NPC = bumped_atom
 		NPC.Aggro(driver, TRUE)
 
-	last_pos["x_pix"] = 0
-	last_pos["y_pix"] = 0
+	last_pixel_x = 0
+	last_pixel_y = 0
 	for(var/mob/living/L in src)
 		if(L.client)
 			L.client.pixel_x = 0
@@ -545,8 +553,9 @@
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
-	last_pos["x"] = x
-	last_pos["y"] = y
+	last_turf_x = x
+	last_turf_y = y
+	last_turf = loc
 
 /obj/darkpack_car/process(seconds_per_tick)
 	return car_move()
@@ -565,12 +574,14 @@
 		if(speed_in_pixels == 0 && !light_on)
 			return PROCESS_KILL
 
-	var/last_x = last_pos["x"]
-	var/last_y = last_pos["y"]
-	var/last_x_pix = last_pos["x_pix"]
-	var/last_y_pix = last_pos["y_pix"]
+	var/last_x = last_turf_x
+	var/last_y = last_turf_y
+	var/last_x_pix = last_pixel_x
+	var/last_y_pix = last_pixel_y
 
-	forceMove(locate(last_x, last_y, z))
+	var/turf/target_turf = locate(last_x, last_y, z)
+	if(target_turf != last_turf)
+		forceMove(target_turf)
 	if(on && used_speed != 0)
 		new /obj/effect/temp_visual/car(loc)
 
@@ -676,33 +687,33 @@
 /obj/darkpack_car/proc/move_car_riders(moved_x, moved_y)
 	for(var/mob/living/rider in src)
 		if(rider.client)
-			rider.client.pixel_x = last_pos["x_frwd"]
-			rider.client.pixel_y = last_pos["y_frwd"]
+			rider.client.pixel_x = forward_pixel_x
+			rider.client.pixel_y = forward_pixel_y
 			animate(rider.client, \
-				pixel_x = last_pos["x_pix"] + moved_x * 2, \
-				pixel_y = last_pos["y_pix"] + moved_y * 2, \
+				pixel_x = last_pixel_x + moved_x * 2, \
+				pixel_y = last_pixel_y + moved_y * 2, \
 				SScarpool.wait, 1)
 
 /obj/darkpack_car/proc/update_last_pos(moved_x, moved_y)
 	// Step 1: Move pixel and forward positions
-	last_pos["x_frwd"] = last_pos["x_pix"] + moved_x * 2
-	last_pos["y_frwd"] = last_pos["y_pix"] + moved_y * 2
-	last_pos["x_pix"] = last_pos["x_pix"] + moved_x
-	last_pos["y_pix"] = last_pos["y_pix"] + moved_y
+	forward_pixel_x = last_pixel_x + moved_x * 2
+	forward_pixel_y = last_pixel_y + moved_y * 2
+	last_pixel_x += moved_x
+	last_pixel_y += moved_y
 
 	// Step 2: Calculate how many whole tiles we moved (if we crossed tile boundaries)
-	var/x_add = (last_pos["x_pix"] < 0 ? -1 : 1) * round((abs(last_pos["x_pix"]) + 16) / 32)
-	var/y_add = (last_pos["y_pix"] < 0 ? -1 : 1) * round((abs(last_pos["y_pix"]) + 16) / 32)
+	var/x_add = (last_pixel_x < 0 ? -1 : 1) * round((abs(last_pixel_x) + 16) / 32)
+	var/y_add = (last_pixel_y < 0 ? -1 : 1) * round((abs(last_pixel_y) + 16) / 32)
 
 	// Step 3: Subtract tile offsets to wrap pixel position into 0–31 range
-	last_pos["x_frwd"] -= x_add * 32
-	last_pos["y_frwd"] -= y_add * 32
-	last_pos["x_pix"] -= x_add * 32
-	last_pos["y_pix"] -= y_add * 32
+	forward_pixel_x -= x_add * 32
+	forward_pixel_y -= y_add * 32
+	last_pixel_x -= x_add * 32
+	last_pixel_y -= y_add * 32
 
 	// Step 4: Update absolute turf coordinates with clamping
-	last_pos["x"] = clamp(last_pos["x"] + x_add, 1, world.maxx)
-	last_pos["y"] = clamp(last_pos["y"] + y_add, 1, world.maxy)
+	last_turf_x = clamp(last_turf_x + x_add, 1, world.maxx)
+	last_turf_y = clamp(last_turf_y + y_add, 1, world.maxy)
 
 /obj/darkpack_car/relaymove(mob/living/user, direction)
 	if(user != driver)
