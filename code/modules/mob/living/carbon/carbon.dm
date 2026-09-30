@@ -198,7 +198,6 @@
 			last_special = world.time + CLICK_CD_RANGE
 		cuff_resist(I)
 
-
 /**
  * Helper to break the cuffs from hands
  * @param {obj/item} cuffs - The cuffs to break
@@ -208,16 +207,16 @@
 /mob/living/carbon/proc/cuff_resist(obj/item/cuffs, breakouttime = null, cuff_break = 0)
 	if((cuff_break != INSTANT_CUFFBREAK) && (SEND_SIGNAL(src, COMSIG_MOB_REMOVING_CUFFS, cuffs) & COMSIG_MOB_BLOCK_CUFF_REMOVAL))
 		return //The blocking object should sent a fluff-appropriate to_chat about cuff removal being blocked
-	if(cuffs.item_flags & BEING_REMOVED)
+	if(DOING_INTERACTION(src, REF(cuffs) ))
 		to_chat(src, span_warning("You're already attempting to remove [cuffs]!"))
 		return
-	cuffs.item_flags |= BEING_REMOVED
+
 	if (isnull(breakouttime))
 		breakouttime = cuffs.breakouttime
 	if(!cuff_break)
 		visible_message(span_warning("[src] attempts to remove [cuffs]!"))
 		to_chat(src, span_notice("You attempt to remove [cuffs]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)"))
-		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, cog_icon = null))
+		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, cog_icon = null, interaction_key = REF(cuffs) ))
 			. = clear_cuffs(cuffs, cuff_break)
 		else
 			to_chat(src, span_warning("You fail to remove [cuffs]!"))
@@ -233,7 +232,6 @@
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		. = clear_cuffs(cuffs, cuff_break)
-	cuffs.item_flags &= ~BEING_REMOVED
 
 /mob/living/carbon/proc/uncuff()
 	if (handcuffed)
@@ -564,7 +562,7 @@
 	if(!client)
 		return
 
-	if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOCRITOVERLAY))
+	if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOCRITOVERLAY) && !HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES)) // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		var/severity = 0
 		switch(health)
 			if(-20 to -10)
@@ -611,7 +609,7 @@
 		clear_fullscreen("critvision")
 
 	//Oxygen damage overlay
-	if(oxyloss)
+	if(oxyloss && !HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES)) // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		var/severity = 0
 		switch(oxyloss)
 			if(10 to 20)
@@ -634,7 +632,7 @@
 
 	//Fire and Brute damage overlay (BSSR)
 	var/hurtdamage = get_brute_loss() + get_fire_loss() + get_agg_loss() + damageoverlaytemp // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
-	if(hurtdamage && !HAS_TRAIT(src, TRAIT_NO_DAMAGE_OVERLAY))
+	if(hurtdamage && !HAS_TRAIT(src, TRAIT_NO_DAMAGE_OVERLAY) && !HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES)) // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		var/severity = 0
 		switch(hurtdamage)
 			if(5 to 15)
@@ -671,7 +669,10 @@
 
 	if(shown_health_amount == null)
 		shown_health_amount = health
-
+	// CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+	if(HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))
+		shown_health_amount = maxHealth
+	// CRIMSON GRID ADD END: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 	if(shown_health_amount >= maxHealth)
 		health_hud.icon_state = "health0"
 	else if(shown_health_amount > 0 && maxHealth > 0)

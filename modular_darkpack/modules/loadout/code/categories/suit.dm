@@ -45,6 +45,24 @@
 /datum/loadout_item/suit/coat/leopardcoat
 	item_path = /obj/item/clothing/suit/vampire/coat/leopard
 
+//CRIMSON GRID ADDITION START: MILPARKA TO LOADOUT
+/datum/loadout_item/suit/jacket/military_parka
+	name = "Military Parka"
+	item_path = /obj/item/clothing/suit/vampire/coat/milparka
+//CRIMSON GRID ADDITION END
+
+/datum/loadout_item/suit/jacket/oversizedjacket
+	name = "Oversized Jacket"
+	item_path = /obj/item/clothing/suit/jacket/oversized
+
+/datum/loadout_item/suit/jacket/fancyfurcoat
+	name = "Fancy Fur Coat"
+	item_path = /obj/item/clothing/suit/jacket/fancy
+
+/datum/loadout_item/suit/jacket/trenchcoatalt
+	name = "Trenchcoat (Alt)"
+	item_path = /obj/item/clothing/suit/toggle/jacket/trenchcoat
+
 // Jackets
 /datum/loadout_item/suit/jacket
 	abstract_type = /datum/loadout_item/suit/jacket
@@ -108,6 +126,12 @@
 /datum/loadout_item/suit/kasaya
 	name = "Kasaya"
 	item_path = /obj/item/clothing/suit/vampire/kasaya
+
+// CRIMSON GRID ADDITION START: HAZARD VEST TO LOADOUT
+/datum/loadout_item/suit/hazard_vest
+	name = "Hazard Vest"
+	item_path = /obj/item/clothing/suit/hazardvest
+//CRIMSON GRID ADDITION END
 
 /datum/loadout_item/suit/imam
 	name = "Imam Robe"

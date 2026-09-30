@@ -1676,8 +1676,8 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "Sleep", null)
 				/mob/living/basic/mining/mook/worker,
 				/mob/living/basic/mining/mook/worker/bard,
 				/mob/living/basic/mining/mook/worker/tribal_chief,
-				/mob/living/basic/mining/legion/monkey,
-				/mob/living/basic/mining/legion/monkey/snow,
+				/mob/living/basic/mining/legion/lesser,
+				/mob/living/basic/mining/legion/lesser/snow,
 				/mob/living/basic/mining/lobstrosity,
 				/mob/living/basic/mining/lobstrosity/lava,
 				/mob/living/basic/mining/ice_demon,
@@ -1844,12 +1844,14 @@ GLOBAL_LIST_EMPTY(fire_appearances)
  * * fire_type: type Type of fire status effect that we apply, should be subtype of /datum/status_effect/fire_handler/fire_stacks
  */
 
-/mob/living/proc/adjust_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks)
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/mob/living/proc/adjust_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks, overwrite_color)
+// CRIMSON GRID ADD END: DARK THAUMATURGY
 	if(stacks < 0)
 		if(HAS_TRAIT(src, TRAIT_NO_EXTINGUISH)) //You can't reduce fire stacks of the everlasting flames
 			return
 		stacks = max(-fire_stacks, stacks)
-	apply_status_effect(fire_type, stacks)
+	apply_status_effect(fire_type, stacks, FALSE, overwrite_color) // CRIMSON GRID ADD: DARK THAUMATURGY
 
 /mob/living/proc/adjust_wet_stacks(stacks, wet_type = /datum/status_effect/fire_handler/wet_stacks)
 	if(HAS_TRAIT(src, TRAIT_NO_EXTINGUISH)) //The everlasting flames will not be extinguished
@@ -1870,7 +1872,9 @@ GLOBAL_LIST_EMPTY(fire_appearances)
  * * remove_wet_stacks: bool If we remove all wet stacks upon doing this
  */
 
-/mob/living/proc/set_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks, remove_wet_stacks = TRUE)
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/mob/living/proc/set_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks, remove_wet_stacks = TRUE, overwrite_color)
+// CRIMSON GRID ADD END: DARK THAUMATURGY
 	if(stacks < 0) //Shouldn't happen, ever
 		CRASH("set_fire_stacks received negative [stacks] fire stacks")
 
@@ -1881,7 +1885,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		remove_status_effect(fire_type)
 		return
 
-	apply_status_effect(fire_type, stacks, TRUE)
+	apply_status_effect(fire_type, stacks, TRUE, overwrite_color) // CRIMSON GRID ADD: DARK THAUMATURGY
 
 /mob/living/proc/set_wet_stacks(stacks, wet_type = /datum/status_effect/fire_handler/wet_stacks, remove_fire_stacks = TRUE)
 	if(stacks < 0)
@@ -1912,12 +1916,17 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(their_fire_status && their_fire_status.on_fire)
 			var/firesplit = (fire_stacks + spread_to.fire_stacks) / 2
 			var/fire_type = (spread_to.fire_stacks > fire_stacks) ? their_fire_status.type : fire_status.type
-			set_fire_stacks(firesplit, fire_type)
-			spread_to.set_fire_stacks(firesplit, fire_type)
+			// CRIMSON GRID ADD: DARK THAUMATURGY
+			var/fire_color = fire_status.overwrite_color || their_fire_status.overwrite_color
+			set_fire_stacks(firesplit, fire_type, TRUE, fire_color)
+			spread_to.set_fire_stacks(firesplit, fire_type, TRUE, fire_color)
+			// CRIMSON GRID ADD END: DARK THAUMATURGY
 			return
 
-		adjust_fire_stacks(-fire_stacks / 2, fire_status.type)
-		spread_to.adjust_fire_stacks(fire_stacks, fire_status.type)
+		// CRIMSON GRID ADD: DARK THAUMATURGY
+		adjust_fire_stacks(-fire_stacks / 2, fire_status.type, fire_status.overwrite_color)
+		spread_to.adjust_fire_stacks(fire_stacks, fire_status.type, fire_status.overwrite_color)
+		// CRIMSON GRID ADD END: DARK THAUMATURGY
 		if(spread_to.ignite_mob())
 			log_message("bumped into [key_name(spread_to)] and set them on fire.", LOG_ATTACK)
 		return
@@ -1925,8 +1934,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(!their_fire_status || !their_fire_status.on_fire)
 		return
 
-	spread_to.adjust_fire_stacks(-spread_to.fire_stacks / 2, their_fire_status.type)
-	adjust_fire_stacks(spread_to.fire_stacks, their_fire_status.type)
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	spread_to.adjust_fire_stacks(-spread_to.fire_stacks / 2, their_fire_status.type, their_fire_status.overwrite_color)
+	adjust_fire_stacks(spread_to.fire_stacks, their_fire_status.type, their_fire_status.overwrite_color)
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 	ignite_mob()
 
 /**
@@ -2186,6 +2197,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DELUSION_HALLUCINATION, "Give Delusion Hallucination")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_GUARDIAN_SPIRIT, "Give Guardian Spirit")
 	VV_DROPDOWN_OPTION(VV_HK_ADMIN_RENAME, "Force Change Name")
+	VV_DROPDOWN_OPTION(VV_HK_NAVIGATE_TO_MARKED_OBJECT, "Navigate To Marked Object")
 
 /mob/living/vv_do_topic(list/href_list)
 	. = ..()
@@ -2233,6 +2245,18 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			"updated_prefs" = replace_preferences,
 		))
 		message_admins("[key_name_admin(usr)] has forcibly changed the real name of [key_name(src)] from '[old_name]' to '[real_name]'[(replace_preferences ? " and their preferences" : "")]")
+
+	if(href_list[VV_HK_NAVIGATE_TO_MARKED_OBJECT])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(!usr.client.holder.marked_datum)
+			to_chat(usr, span_warning("You don't have any object marked."))
+		else if(!isatom(usr.client.holder.marked_datum))
+			to_chat(usr, span_warning("The object you have marked cannot be used as a target. Target must be an atom."))
+		else
+			create_navigation_line(usr.client.holder.marked_datum)
+
 
 /mob/living/proc/move_to_error_room()
 	var/obj/effect/landmark/error/error_landmark = locate(/obj/effect/landmark/error) in GLOB.landmarks_list

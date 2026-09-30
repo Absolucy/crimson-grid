@@ -11,7 +11,7 @@
 		/datum/discipline/celerity,
 		/datum/discipline/presence
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_SENSITIVE_HUMANITY
 	)
 	male_clothes = /obj/item/clothing/under/vampire/toreador
@@ -19,7 +19,11 @@
 	subsplat_keys = /obj/item/vamp/keys/toreador
 
 /datum/subsplat/vampire_clan/toreador/psychomania_effect(mob/living/target, mob/living/owner)
-	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh2.ogg", 50, FALSE)
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh2.ogg", 50, FALSE)
 	new /datum/hallucination/fire(target, TRUE)
 	to_chat(target, span_cult("FLAMES ENGULF MY BEAUTY"))
-	target.Paralyze(5 SECONDS)
+	target.Paralyze(5 SECONDS) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY

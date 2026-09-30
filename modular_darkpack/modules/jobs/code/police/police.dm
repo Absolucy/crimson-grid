@@ -1,14 +1,13 @@
 /datum/job/vampire/police_officer
 	title = JOB_POLICE_OFFICER
 	faction = FACTION_CITY
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 9 // CRIMSON EDIT CHANGE - Original: total_positions = 5
+	spawn_positions = 9 // CRIMSON EDIT CHANGE - Original: spawn_positions = 5
 	supervisors = SUPERVISOR_POLICE_CAPTAIN_AND_SERGEANT
 	config_tag = "POLICE_OFFICER"
 	outfit = /datum/outfit/job/vampire/police_officer
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_POLICE
-	exp_required_type_department = EXP_TYPE_POLICE
 	departments_list = list(
 		/datum/job_department/police,
 	)

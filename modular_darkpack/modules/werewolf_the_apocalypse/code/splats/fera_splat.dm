@@ -42,6 +42,7 @@
 		else
 			return FALSE
 
+	update_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 	owner.update_werewolf_hud()
 	return TRUE
 
@@ -79,9 +80,21 @@
 
 	splat_traits = list(
 		TRAIT_FERA_RENOWN,
+		TRAIT_GAIA_CAERN_FRIEND, // Without them having there own tribes or declared alligence. This is the best way to determine.
 	)
 
 	// incompatible_splats = list(/datum/splat/werewolf/shifter) // TODO: Becoming a shifter should get rid of your kinfolk splat
+
+/datum/splat/werewolf/kinfolk/on_gain() //Currently just for granting language Garou Tongue or High Tongue that Kinfolk can learn.
+	. = ..()
+	owner.grant_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE, LANGUAGE_SPLAT) //Separated because Spoken and Hearing Components are separated
+	owner.grant_language(/datum/language/garou_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_SPLAT)
+
+/datum/splat/werewolf/kinfolk/on_lose_or_destroy()
+	. = ..()
+	if(!QDELING(owner))
+		owner.remove_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE, LANGUAGE_SPLAT) //Separated because Spoken and Hearing Components are separated
+		owner.remove_language(/datum/language/garou_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_SPLAT)
 
 /datum/splat/werewolf/shifter
 	abstract_type = /datum/splat/werewolf/shifter
@@ -105,6 +118,7 @@
 	var/list/transformation_list = list()
 	/// Stats added and removed upon gaining the species of the splat. Assoc list indexed by the species ids for each form
 	var/list/transformation_stats
+	var/list/transformation_stat_clamps
 	var/transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/transform.ogg'
 	COOLDOWN_DECLARE(transform_cd)
 	/**
@@ -139,6 +153,7 @@
 
 /datum/splat/werewolf/shifter/on_lose_or_destroy()
 	. = ..()
+	clear_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 	if(!QDELETED(owner))
 		owner.set_species(/datum/species/human)
 
@@ -224,7 +239,6 @@
 			STAT_STAMINA = 3,
 			STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -3,
-			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
 		),
 		SPECIES_FERA_DIRE = list(
 			STAT_STRENGTH = 3,
@@ -238,6 +252,11 @@
 			STAT_DEXTERITY = 2,
 			STAT_MANIPULATION = -3,
 		)
+	)
+	transformation_stat_clamps = list(
+		SPECIES_FERA_WAR = list(
+			STAT_APPEARANCE = 0
+		),
 	)
 	mimmicing_animal = /mob/living/basic/pet/dog/wolf
 
@@ -266,7 +285,6 @@
 			STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -2,
 			STAT_PERCEPTION = 3,
-			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
 		),
 		SPECIES_FERA_FERAL = list(
 			STAT_STRENGTH = -1,
@@ -274,6 +292,11 @@
 			STAT_MANIPULATION = -3,
 			STAT_PERCEPTION = 4,
 		)
+	)
+	transformation_stat_clamps = list(
+		SPECIES_FERA_WAR = list(
+			STAT_APPEARANCE = 0
+		),
 	)
 	transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/corax_transform.ogg'
 	mob_icons = list(
@@ -306,3 +329,30 @@
 
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
+
+//CRMISON GRID ADDITION START - adds scaling rage speed and slowdown immunites based on rage amount
+
+/datum/splat/werewolf/proc/update_rage_effects()
+	if(!owner)
+		return
+	var/is_fighting_form = istype(owner.dna?.species, /datum/species/human/shifter/war) || istype(owner.dna?.species, /datum/species/human/shifter/dire)
+	var/rage_slowdown = -0.01 * clamp(rage, 0, permanent_rage)
+	if(rage >= 3 && is_fighting_form)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
+	if(rage < 3 && is_fighting_form)
+		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	if(rage >= 6 && is_fighting_form)
+		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	if(rage < 6 && is_fighting_form)
+		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+/datum/movespeed_modifier/shifter/rage
+	variable = TRUE
+
+/datum/splat/werewolf/shifter/proc/clear_rage_effects()
+	if(!owner)
+		return
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+//CRMISON GRID ADDITION END

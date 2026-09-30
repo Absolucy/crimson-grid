@@ -20,7 +20,7 @@
 	)
 
 	description = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 0
 	allowed_splats = list(SPLAT_KINDRED)
@@ -38,10 +38,8 @@
 	r_pocket = /obj/item/vamp/keys/giovanni
 	backpack_contents = list(/obj/item/card/credit/rich=1, /obj/item/ritual_tome/necromancy=1, /obj/item/vamp/keys/graveyard = 1)
 
-
 /datum/job/vampire/squadra/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	var/obj/structure/vaultdoor/pincode/bank/door = locate() in GLOB.vault_doors
 	if(door)
 		spawned.mind.add_memory(/datum/memory/key/bank_vault_code, remembered_code = door.pincode)
-
