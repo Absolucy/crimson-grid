@@ -1695,10 +1695,6 @@
 /obj/structure/platform/lowwall/market/window/reinforced,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/shop/camping_store)
-"att" = (
-/obj/machinery/light/directional/west,
-/turf/open/floor/plating,
-/area/vtm/interior/endron_facility/plant)
 "atu" = (
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
@@ -4112,10 +4108,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/ghetto)
-"aUB" = (
-/obj/effect/realistic_fog,
-/turf/open/water/vamp_sewer,
-/area/vtm/interior/sewer)
 "aUI" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass,
@@ -27374,7 +27366,9 @@
 /area/vtm/interior/oldchurch)
 "gza" = (
 /obj/machinery/button/door{
-	id = "Endron_Plant_Front"
+	id = "Endron_Plant_Front";
+	pixel_x = 0;
+	pixel_y = 3
 	},
 /turf/closed/wall/vampwall/metal,
 /area/vtm/outside/pacificheights/forest)
@@ -32350,6 +32344,10 @@
 /obj/effect/decal/wallpaper/red,
 /turf/closed/wall/vampwall/market,
 /area/vtm/interior/shop/arts)
+"hKv" = (
+/obj/effect/realistic_fog/dense/extreme,
+/turf/open/water/acid,
+/area/vtm/interior/sewer)
 "hKx" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/south{
 	max_integrity = 1000000
@@ -34621,9 +34619,6 @@
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/graveyard)
-"iqD" = (
-/turf/open/floor/plating,
-/area/vtm/interior/endron_facility/plant)
 "iqE" = (
 /obj/structure/chair/sofa/middle/brown{
 	dir = 8
@@ -41367,12 +41362,12 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/salubri)
 "jXF" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
-	id = "Endron_Plant_Front"
-	},
 /obj/effect/turf_decal/darkpack/grass{
 	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
+	id = "Endron_Plant_Front"
 	},
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
@@ -48009,7 +48004,8 @@
 /area/vtm/interior/oldchurch)
 "lEi" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Endron Processing 2"
+	c_tag = "Endron Processing 2";
+	network = list("Endron")
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/outside/pacificheights/forest)
@@ -62119,10 +62115,6 @@
 /obj/effect/decal/wallpaper/red,
 /turf/closed/wall/vampwall/city,
 /area/vtm/interior/theatre)
-"oUW" = (
-/obj/effect/realistic_fog/dense,
-/turf/open/floor/plating/grate,
-/area/vtm/interior/sewer)
 "oVa" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 1
@@ -63013,10 +63005,6 @@
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf/ghetto)
-"pia" = (
-/obj/effect/realistic_fog/dense/extreme,
-/turf/open/floor/plating/grate,
-/area/vtm/interior/sewer)
 "pie" = (
 /obj/structure/chair/pew/right{
 	dir = 4
@@ -66037,7 +66025,7 @@
 "pTP" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Processing 7";
+	c_tag = "Endron Processing 8";
 	pixel_x = 11;
 	pixel_y = 24
 	},
@@ -68652,6 +68640,10 @@
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
+"qzi" = (
+/obj/effect/realistic_fog/dense/extreme,
+/turf/open/water/acid,
+/area/vtm/interior/endron_facility/plant)
 "qzj" = (
 /obj/item/reagent_containers/cup/glass/drinkingglass/wine_glass{
 	pixel_y = 9;
@@ -72532,6 +72524,13 @@
 /obj/vampire_computer,
 /turf/open/floor/carpet/darkpack/blacksilver,
 /area/vtm/interior/millennium_tower/f3)
+"ruq" = (
+/obj/machinery/camera/directional/south{
+	network = list("Endron");
+	c_tag = "Endron Processing 6"
+	},
+/turf/open/floor/plating/canal,
+/area/vtm/interior/endron_facility/plant)
 "ruw" = (
 /obj/structure/table/wood/poker,
 /obj/item/gun/ballistic/revolver/darkpack/magnum,
@@ -73475,7 +73474,7 @@
 "rED" = (
 /obj/machinery/camera/directional/south{
 	network = list("Endron");
-	c_tag = "Endron Processing 6"
+	c_tag = "Endron Processing 7"
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
@@ -86998,10 +86997,10 @@
 /area/vtm)
 "uVH" = (
 /obj/structure/guncase,
-/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle,
-/obj/item/ammo_box/darkpack/c45acp,
-/obj/item/ammo_box/magazine/darkpack45acp,
-/obj/item/ammo_box/magazine/darkpack45acp,
+/obj/item/ammo_box/darkpack/c44,
+/obj/item/gun/ballistic/revolver/darkpack/magnum,
+/obj/item/ammo_box/magazine/m44,
+/obj/item/ammo_box/magazine/m44,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
 "uVK" = (
@@ -90552,6 +90551,7 @@
 	pixel_y = 24;
 	pixel_x = -5
 	},
+/obj/effect/realistic_fog/dense/strong,
 /turf/open/water/acid,
 /area/vtm/interior/endron_facility/plant)
 "vQj" = (
@@ -91389,8 +91389,8 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "vYZ" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
 	id = "Endron_Plant_Front"
 	},
 /turf/open/misc/dirt,
@@ -92531,11 +92531,11 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "won" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 8;
+/obj/effect/turf_decal/darkpack/grass,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4;
 	id = "Endron_Plant_Front"
 	},
-/obj/effect/turf_decal/darkpack/grass,
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
 "woo" = (
@@ -99805,6 +99805,13 @@
 	icon_state = "piping35"
 	},
 /turf/open/floor/plating/canalplating,
+/area/vtm/interior/sewer)
+"xXo" = (
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/effect/realistic_fog/dense/strong,
+/turf/open/water/acid,
 /area/vtm/interior/sewer)
 "xXy" = (
 /obj/effect/turf_decal/siding/dark_blue/corner{
@@ -132023,7 +132030,7 @@ dvN
 dvN
 dvN
 wqF
-iDd
+xXo
 xgq
 wqF
 dvN
@@ -133794,7 +133801,7 @@ isZ
 isZ
 isZ
 isZ
-isZ
+pDb
 isZ
 isZ
 xqR
@@ -134085,9 +134092,9 @@ uXt
 pxv
 pxv
 stf
-iqD
-att
-iqD
+ntQ
+tmq
+tmq
 stf
 snI
 snI
@@ -134342,9 +134349,9 @@ aKF
 pxv
 pxv
 ldA
-iqD
-iqD
-iqD
+tmq
+jFB
+tmq
 stf
 snI
 snI
@@ -134599,9 +134606,9 @@ hsY
 pxv
 pxv
 pxv
-iqD
-iqD
-iqD
+tmq
+tmq
+tmq
 stf
 snI
 snI
@@ -134856,9 +134863,9 @@ pxv
 pxv
 qOM
 stf
-iqD
-iqD
-iqD
+tmq
+tmq
+tmq
 stf
 snI
 snI
@@ -135851,7 +135858,7 @@ snI
 wTq
 swL
 xqR
-isZ
+pDb
 isZ
 xqR
 waf
@@ -136108,7 +136115,7 @@ snI
 wTq
 izo
 xqR
-pDb
+isZ
 isZ
 xqR
 waf
@@ -137929,7 +137936,7 @@ snI
 snI
 snI
 fmq
-oUW
+fmq
 iDd
 xgq
 xgq
@@ -138176,7 +138183,7 @@ xgq
 xgq
 xgq
 xgq
-pia
+fmq
 fmq
 fmq
 fmq
@@ -138187,7 +138194,7 @@ fmq
 fmq
 fmq
 iDd
-xgq
+hKv
 xgq
 xgq
 snI
@@ -138421,7 +138428,7 @@ snI
 wTq
 mYt
 xqR
-isZ
+pDb
 isZ
 xqR
 waf
@@ -138432,7 +138439,7 @@ snI
 xgq
 xgq
 xgq
-xgq
+hKv
 xgq
 xgq
 xgq
@@ -138935,7 +138942,7 @@ snI
 wTq
 mYt
 xqR
-aUB
+isZ
 isZ
 xqR
 rYV
@@ -196015,7 +196022,7 @@ tqn
 jnM
 oUM
 bQp
-bQp
+qzi
 coU
 lSr
 lSr
@@ -199099,7 +199106,7 @@ tqn
 bpo
 oUM
 bQp
-bQp
+qzi
 bQp
 bQp
 bQp
@@ -199619,11 +199626,11 @@ bQp
 bQp
 mjd
 wqv
-wqv
+ruq
 stf
-ntQ
-tmq
-tmq
+ahv
+ahv
+ahv
 stf
 lXX
 pxv
@@ -199878,9 +199885,9 @@ wqv
 wqv
 wqv
 osj
-tmq
-jFB
-tmq
+ahv
+ahv
+ahv
 stf
 pxv
 uzp
@@ -200135,9 +200142,9 @@ wqv
 wqv
 wqv
 qbM
-tmq
-tmq
-tmq
+ahv
+ahv
+ahv
 stf
 pxv
 pxv
@@ -200392,9 +200399,9 @@ wqv
 wqv
 mVS
 stf
-tmq
-tmq
-tmq
+ahv
+ahv
+ahv
 stf
 pxv
 pxv
