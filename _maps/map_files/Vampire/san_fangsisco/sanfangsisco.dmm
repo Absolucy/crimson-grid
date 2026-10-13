@@ -49773,11 +49773,6 @@
 /obj/effect/turf_decal/siding/wood/dark/end,
 /turf/open/floor/carpet/darkpack/bluesilver,
 /area/vtm/interior/salubri)
-"lXX" = (
-/obj/machinery/light/warm/directional/north,
-/obj/machinery/light/warm/directional/north,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
 "lXY" = (
 /obj/structure/curtain/cloth/fancy,
 /turf/open/floor/wood/tile,
@@ -199632,7 +199627,7 @@ ahv
 ahv
 ahv
 stf
-lXX
+pxv
 pxv
 pxv
 pxv
