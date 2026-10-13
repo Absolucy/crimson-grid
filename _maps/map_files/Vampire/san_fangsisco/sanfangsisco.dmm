@@ -12295,6 +12295,17 @@
 	},
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
+"cTs" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/structure/closet,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/endron_facility/restricted)
 "cTu" = (
 /obj/structure/table/rolling,
 /obj/item/stack/medical/bone_gel,
@@ -44273,6 +44284,7 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/structure/table/countertop/green,
+/obj/item/gun/syringe,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "kUk" = (
@@ -55692,9 +55704,10 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/financialdistrict)
 "nKX" = (
-/obj/machinery/defibrillator_mount/loaded{
+/obj/machinery/defibrillator_mount/charging{
 	pixel_y = 30
 	},
+/obj/item/defibrillator/loaded,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "nLa" = (
@@ -365522,7 +365535,7 @@ cXU
 bQo
 bQo
 bQo
-bQo
+cTs
 tZR
 dLJ
 dLJ
