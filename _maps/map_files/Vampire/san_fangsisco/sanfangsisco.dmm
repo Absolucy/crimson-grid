@@ -17125,17 +17125,6 @@
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/oldchurch)
-"eaG" = (
-/obj/effect/decal/shadow{
-	icon_state = "shadow-alt";
-	pixel_y = 32
-	},
-/obj/effect/decal/shadow{
-	icon_state = "shadow-alt";
-	pixel_y = 32
-	},
-/turf/open/lava,
-/area/vtm/interior)
 "eaJ" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin{
@@ -23656,10 +23645,6 @@
 "fFa" = (
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/museum)
-"fFf" = (
-/obj/structure/ladder/manhole/down,
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior)
 "fFg" = (
 /obj/structure/sign/warning/no_smoking{
 	pixel_y = 29
@@ -38888,12 +38873,6 @@
 "jtt" = (
 /turf/closed/wall/vampwall/brick_old,
 /area/vtm/outside/pacificheights)
-"jtA" = (
-/obj/item/vamp/keys{
-	accesslocks = list("mansion")
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior)
 "jtB" = (
 /obj/item/reagent_containers/cup/glass/drinkingglass/wine_glass{
 	pixel_y = 5;
@@ -54375,10 +54354,6 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
-"ndL" = (
-/obj/structure/vampdoor/old,
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior)
 "ndS" = (
 /obj/structure/closet,
 /obj/item/storage/fancy/cigarettes/dromedaryco,
@@ -57020,15 +56995,6 @@
 	color = "#8a8a8a"
 	},
 /area/vtm)
-"nLv" = (
-/obj/effect/decal/shadow{
-	pixel_y = -32
-	},
-/obj/effect/decal/shadow{
-	pixel_y = -32
-	},
-/turf/open/lava,
-/area/vtm/interior)
 "nLx" = (
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf/ghetto)
@@ -201923,14 +201889,14 @@ jcc
 jTA
 jTA
 dvN
-vkA
+snI
 snI
 mTj
 mTj
-lfj
-lfj
-lfj
-lfj
+mTj
+mTj
+mTj
+mTj
 mTj
 dvN
 dvN
@@ -202180,14 +202146,14 @@ xBO
 jdF
 jTA
 dvN
-vkA
+snI
 snI
 mTj
-lfj
-lfj
-lfj
-lfj
-lfj
+mTj
+mTj
+mTj
+mTj
+mTj
 mTj
 dvN
 dvN
@@ -202438,14 +202404,14 @@ vBY
 jdF
 dvN
 dvN
-vkA
+snI
 mTj
-lfj
-lfj
-lfj
-lfj
-lfj
-lfj
+mTj
+mTj
+mTj
+mTj
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -202695,14 +202661,14 @@ jdF
 vuW
 pXK
 dvN
-vkA
+snI
 mTj
-lfj
-lfj
-lfj
-lfj
-lfj
-lfj
+mTj
+mTj
+mTj
+mTj
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -202952,14 +202918,14 @@ jdF
 jdF
 pXK
 dvN
-vkA
+snI
 mTj
-lfj
-lfj
-lfj
-lfj
-lfj
-lfj
+mTj
+mTj
+mTj
+mTj
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -203209,14 +203175,14 @@ vuW
 aEe
 fJa
 dvN
-vkA
+snI
 mTj
-lfj
-lfj
-lfj
-lfj
-lfj
-lfj
+mTj
+mTj
+mTj
+mTj
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -203471,8 +203437,8 @@ dvN
 dvN
 dvN
 dvN
-lfj
-lfj
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -203731,8 +203697,8 @@ dvN
 dvN
 dvN
 dvN
-vaP
-fFf
+mTj
+mTj
 dvN
 dvN
 dvN
@@ -203988,7 +203954,7 @@ jTA
 jTA
 jTA
 dvN
-vxi
+mTj
 dvN
 dvN
 dvN
@@ -265910,11 +265876,11 @@ vaP
 oGM
 vaP
 lPM
-qNC
-vaP
-ndL
-jtA
-vaP
+mTj
+mTj
+mTj
+mTj
+mTj
 mTj
 mTj
 mTj
@@ -266171,7 +266137,7 @@ mTj
 mTj
 mTj
 mTj
-vaP
+mTj
 mTj
 mTj
 mTj
@@ -266428,7 +266394,7 @@ iGI
 mTj
 vaP
 mTj
-vaP
+mTj
 mTj
 mTj
 mTj
@@ -266685,7 +266651,7 @@ mTj
 mTj
 mTj
 mTj
-vaP
+mTj
 mTj
 mTj
 mTj
@@ -266942,10 +266908,10 @@ vaP
 vaP
 vaP
 mTj
-vaP
-vaP
-vaP
-vaP
+mTj
+mTj
+mTj
+mTj
 mTj
 mTj
 mTj
@@ -267202,7 +267168,7 @@ mTj
 mTj
 mTj
 mTj
-vaP
+mTj
 mTj
 mTj
 mTj
@@ -267459,7 +267425,7 @@ mTj
 ntq
 ntq
 mTj
-vaP
+mTj
 mTj
 mTj
 mTj
@@ -267716,9 +267682,9 @@ ntq
 ntq
 ntq
 mTj
-vaP
-vaP
-vaP
+mTj
+mTj
+mTj
 mTj
 lfj
 vaP
@@ -267975,12 +267941,12 @@ ntq
 mTj
 mTj
 mTj
-vaP
 mTj
-nLv
-bgZ
-bgZ
-eaG
+mTj
+lfj
+lfj
+lfj
+lfj
 mTj
 lfj
 mTj
@@ -268232,12 +268198,12 @@ ntq
 ntq
 dvN
 mTj
-vaP
 mTj
-nLv
-bgZ
-bgZ
-eaG
+mTj
+lfj
+lfj
+lfj
+lfj
 lfj
 lfj
 lfj
@@ -268489,7 +268455,7 @@ ntq
 ntq
 dvN
 mTj
-vaP
+mTj
 mTj
 lfj
 lfj
@@ -268746,7 +268712,7 @@ ntq
 ntq
 dvN
 mTj
-vaP
+mTj
 mTj
 mTj
 mTj
@@ -269003,12 +268969,12 @@ ntq
 ntq
 dvN
 mTj
-vaP
-vaP
-vaP
-vaP
-vaP
-vaP
+mTj
+mTj
+mTj
+mTj
+mTj
+mTj
 mTj
 mTj
 mTj
@@ -269264,10 +269230,10 @@ mTj
 mTj
 mTj
 mTj
-vaP
-vaP
-vaP
-vaP
+mTj
+mTj
+mTj
+mTj
 mTj
 dvN
 dvN
@@ -269524,7 +269490,7 @@ mTj
 mTj
 mTj
 mTj
-fFf
+mTj
 mTj
 dvN
 dvN
