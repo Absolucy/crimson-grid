@@ -3720,6 +3720,8 @@
 /obj/item/clothing/gloves/vampire/latex,
 /obj/structure/closet,
 /obj/structure/sign/warning/biohazard/directional/north,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/obj/item/clothing/under/vampire/nurse/nurseb,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "aRw" = (
@@ -7992,6 +7994,10 @@
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
+"bQQ" = (
+/obj/structure/sign/warning/no_smoking/directional/north,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "bQW" = (
 /obj/structure/shipping_container/darkpack/endron/alt,
 /turf/open/misc/grass,
@@ -39870,6 +39876,10 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/endron_facility/helipad)
+"jFi" = (
+/obj/structure/sign/warning/biohazard/directional/north,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "jFk" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
@@ -53890,6 +53900,8 @@
 /obj/item/clothing/gloves/vampire/latex,
 /obj/structure/closet,
 /obj/structure/sign/warning/chem_diamond/directional/north,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/obj/item/clothing/under/vampire/nurse/nurseb,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "mYS" = (
@@ -56938,9 +56950,10 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/financialdistrict)
 "nKX" = (
-/obj/machinery/defibrillator_mount/loaded{
+/obj/machinery/defibrillator_mount/charging{
 	pixel_y = 30
 	},
+/obj/item/defibrillator/loaded,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "nLa" = (
@@ -57749,6 +57762,10 @@
 	},
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
+"nSr" = (
+/obj/structure/sign/warning/no_smoking/circle/directional/north,
+/turf/open/floor/plating/grate,
+/area/vtm/interior/endron_facility/plant)
 "nSA" = (
 /obj/effect/turf_decal/bordur{
 	dir = 6
@@ -79029,6 +79046,10 @@
 /obj/structure/table/wood,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
+"sZa" = (
+/obj/structure/sign/warning/fire/directional/north,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "sZb" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/vampire/vest,
@@ -88353,6 +88374,10 @@
 /obj/machinery/vending/boozeomat,
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/anarch)
+"vor" = (
+/obj/structure/sign/warning/directional/north,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "vot" = (
 /obj/structure/urinal{
 	pixel_y = 32
@@ -91890,6 +91915,8 @@
 /obj/item/clothing/gloves/vampire/latex,
 /obj/structure/closet,
 /obj/structure/sign/warning/secure_area/directional/north,
+/obj/item/clothing/under/vampire/nurse/nurseb,
+/obj/item/clothing/under/vampire/nurse/nurseb,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "wgc" = (
@@ -98210,6 +98237,12 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/textured_half,
 /area/vtm/interior/endron_facility/restricted)
+"xEA" = (
+/obj/effect/decal/pallet,
+/obj/effect/turf_decal/delivery,
+/obj/structure/sign/warning/chem_diamond/directional/north,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "xEC" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/old,
@@ -196254,7 +196287,7 @@ wqv
 wqv
 wqv
 stf
-pxv
+jFi
 pxv
 pxv
 pxv
@@ -196511,7 +196544,7 @@ wqv
 wqv
 ijc
 stf
-xuO
+xEA
 xuO
 pxv
 pxv
@@ -196772,7 +196805,7 @@ stf
 stf
 stf
 tqn
-pxv
+vor
 pxv
 pxv
 pxv
@@ -198039,7 +198072,7 @@ dvN
 dvN
 dvN
 tqn
-bqT
+nSr
 rqp
 pZI
 pZI
@@ -198314,7 +198347,7 @@ fSe
 pxv
 pxv
 tqn
-pxv
+bQQ
 pxv
 pxv
 pxv
@@ -198828,7 +198861,7 @@ stf
 stf
 stf
 tqn
-pxv
+sZa
 pxv
 pxv
 pxv
