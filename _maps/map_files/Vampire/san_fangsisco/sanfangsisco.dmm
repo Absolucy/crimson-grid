@@ -41348,6 +41348,7 @@
 	dir = 4;
 	id = "Endron_Plant_Front"
 	},
+/obj/effect/landmark/npcwall,
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
 "jXL" = (
@@ -91354,6 +91355,7 @@
 	dir = 4;
 	id = "Endron_Plant_Front"
 	},
+/obj/effect/landmark/npcwall,
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
 "vZh" = (
@@ -92497,6 +92499,7 @@
 	dir = 4;
 	id = "Endron_Plant_Front"
 	},
+/obj/effect/landmark/npcwall,
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
 "woo" = (
@@ -137625,7 +137628,7 @@ waf
 wTq
 fmq
 fmq
-xgq
+eEB
 xgq
 xgq
 fmq
@@ -138397,7 +138400,7 @@ wTq
 snI
 snI
 snI
-xgq
+iDd
 xgq
 xgq
 hKv
@@ -204732,7 +204735,7 @@ pdi
 pdi
 pdi
 pdi
-cGI
+pdi
 pdi
 pdi
 pdi
