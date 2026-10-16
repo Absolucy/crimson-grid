@@ -2545,7 +2545,7 @@
 /obj/machinery/button/door{
 	pixel_x = -21;
 	pixel_y = 1;
-	id = "Endron_Plant_Front"
+	id = "Endron_Plant"
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
@@ -3813,7 +3813,7 @@
 "aSd" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
-	id = "Endron_Plant_Front"
+	id = "Endron_Plant"
 	},
 /obj/effect/turf_decal{
 	dir = 8
