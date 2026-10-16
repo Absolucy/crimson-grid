@@ -30089,13 +30089,8 @@
 /turf/open/misc/grass/nosmooth,
 /area/vtm/outside/giovanni/courtyard)
 "gXj" = (
-/obj/structure/bed{
-	pixel_y = 13
-	},
-/obj/structure/bed{
-	pixel_y = 4
-	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/bed,
 /turf/open/floor/wood/rough,
 /area/vtm/interior)
 "gXr" = (
