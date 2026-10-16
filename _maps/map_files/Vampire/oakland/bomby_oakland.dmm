@@ -29220,12 +29220,10 @@
 /area/vtm/outside/baywalk)
 "gNg" = (
 /obj/effect/mapping_helpers/door/access/park_ranger,
-/obj/structure/vampdoor/simple{
-	lockpick_difficulty = 12
-	},
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/structure/vampdoor/simple,
 /turf/open/floor/plating/rough/cave{
 	icon_state = "stone8"
 	},
@@ -36994,6 +36992,7 @@
 /obj/structure/vampdoor/wood{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/misc/dirt,
 /area/vtm/interior)
 "izx" = (
@@ -45523,6 +45522,9 @@
 "kyk" = (
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/claimable,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/rough,
 /area/vtm/interior)
 "kyn" = (
@@ -81334,6 +81336,9 @@
 "sNT" = (
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/claimable,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "sOl" = (
@@ -100275,16 +100280,15 @@
 /area/vtm/interior/shop)
 "xkI" = (
 /obj/effect/mapping_helpers/door/access/park_ranger,
-/obj/structure/vampdoor/simple{
-	lockpick_difficulty = 12;
-	dir = 4
-	},
 /obj/structure/spacevine{
 	can_spread = 0
 	},
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/structure/vampdoor/simple{
+	dir = 4
+	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/wyld/caern/bawn)
 "xkK" = (
