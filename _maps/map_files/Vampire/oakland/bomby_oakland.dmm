@@ -467,15 +467,6 @@
 "agj" = (
 /turf/open/floor/city/factory,
 /area/vtm/interior)
-"agm" = (
-/obj/effect/turf_decal/siding/wood/dark,
-/obj/structure/vampdoor/simple{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/door/access/park_ranger,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "agp" = (
 /obj/structure/table,
 /obj/machinery/light/blacklight/directional/east{
@@ -2772,10 +2763,6 @@
 	},
 /turf/open/floor/eighties,
 /area/vtm/interior/shop)
-"aIh" = (
-/obj/structure/flora/tree/vamp/pine,
-/turf/open/misc/grass,
-/area/vtm/planetgeneration/woodland)
 "aIk" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
@@ -4464,6 +4451,7 @@
 "bcw" = (
 /obj/structure/railing,
 /obj/effect/decal/cleanable/trash,
+/obj/effect/turf_decal/siding/wood/dark,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "bcy" = (
@@ -8204,12 +8192,6 @@
 /obj/effect/turf_decal/siding/grey,
 /turf/open/floor/city/plating,
 /area/vtm/interior/shop)
-"bVg" = (
-/obj/structure/flora/bush/fullgrass/style_random,
-/mob/living/basic/deer,
-/obj/structure/flora/bush/flowers_br/style_random,
-/turf/open/misc/grass,
-/area/vtm/outside/forest)
 "bVj" = (
 /obj/structure/vampdoor,
 /obj/effect/mapping_helpers/door/access/malkavian,
@@ -18935,9 +18917,6 @@
 /area/vtm/interior/clinic)
 "etK" = (
 /obj/machinery/oven/range,
-/obj/item/wallframe/fish{
-	pixel_y = 39
-	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "etL" = (
@@ -24635,6 +24614,15 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/strip)
+"fIC" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/murdercabin)
 "fII" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/police)
@@ -27042,12 +27030,11 @@
 /turf/closed/wall/vampwall/city,
 /area/vtm/interior/ghetto)
 "gmE" = (
-/obj/structure/railing{
+/obj/effect/decal/wallpaper/stone/low/tilt{
 	dir = 8
 	},
-/obj/structure/railing,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/murdercabin)
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "gmK" = (
 /obj/machinery/sprinkler,
 /turf/open/floor/plating/rough,
@@ -29238,7 +29225,7 @@
 	},
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/plating/rough/cave{
 	icon_state = "stone8"
 	},
@@ -32681,13 +32668,6 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/shop)
-"hAZ" = (
-/mob/living/basic/deer,
-/obj/structure/flora/bush/flowers_yw,
-/obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/mine/stick,
-/turf/open/misc/grass,
-/area/vtm/outside/forest)
 "hBe" = (
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
@@ -37069,9 +37049,8 @@
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
 "iAj" = (
-/obj/structure/spacevine{
-	can_spread = 0;
-	pixel_x = -30
+/obj/structure/flora/rock/pile/darkpack{
+	pixel_y = -15
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/caves)
@@ -38291,6 +38270,13 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 8
 	},
+/obj/structure/vampdoor/simple{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/door/access/park_ranger,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
 /turf/open/floor/city/industrial,
 /area/vtm/interior)
 "iPA" = (
@@ -46509,6 +46495,12 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior)
+"kKX" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 8
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/murdercabin)
 "kKZ" = (
 /obj/effect/landmark/navigate_destination,
 /turf/open/floor/plating/sidewalk/poor,
@@ -49243,6 +49235,10 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
 "lsR" = (
+/obj/fusebox,
+/obj/effect/decal/wallpaper/stone/low/tilt{
+	dir = 4
+	},
 /turf/open/floor/iron/stairs/black{
 	dir = 8
 	},
@@ -55532,6 +55528,12 @@
 	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/upstairs)
+"mTt" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 4
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/murdercabin)
 "mTw" = (
 /obj/structure/hedge,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -57040,6 +57042,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/park_ranger,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
 "nlB" = (
@@ -57420,11 +57424,11 @@
 /area/vtm/interior/sewer/nosferatu_warren)
 "nps" = (
 /obj/effect/turf_decal/siding/white,
-/obj/structure/vampdoor/prison{
-	lockpick_difficulty = 15
-	},
 /obj/effect/mapping_helpers/door/access/park_ranger,
 /obj/effect/mapping_helpers/door/lock,
+/obj/structure/vampdoor/prison,
+/obj/effect/mapping_helpers/door/bash_difficulty/nine,
+/obj/effect/mapping_helpers/door/lock_difficulty/nine,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "npu" = (
@@ -57455,9 +57459,7 @@
 	},
 /area/vtm/interior/setite/basement)
 "npM" = (
-/obj/structure/closet/secure_closet/freezer/fridge/open{
-	pixel_y = 14
-	},
+/obj/structure/closet/secure_closet/freezer/fridge/open,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "npN" = (
@@ -58308,12 +58310,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment)
 "nzo" = (
-/obj/structure/railing,
-/obj/structure/railing{
+/obj/effect/decal/wallpaper/stone/low/tilt{
 	dir = 4
 	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/murdercabin)
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "nzt" = (
 /obj/machinery/light/floor{
 	pixel_x = -10;
@@ -59885,6 +59886,8 @@
 "nSa" = (
 /obj/structure/vampdoor/simple,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/access/park_ranger,
 /turf/open/floor/plating/rough/cave{
 	icon_state = "stone8"
 	},
@@ -59994,7 +59997,12 @@
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/millennium_tower)
 "nTp" = (
-/obj/structure/railing,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 10
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "nTu" = (
@@ -65263,6 +65271,8 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/park_ranger,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
 "pbl" = (
@@ -75593,6 +75603,9 @@
 /turf/open/floor/plating/stone,
 /area/vtm/interior/wyld/caern/bawn)
 "rwa" = (
+/obj/effect/decal/wallpaper/stone/low/tilt{
+	dir = 8
+	},
 /turf/open/floor/iron/stairs/black{
 	dir = 4
 	},
@@ -77293,9 +77306,6 @@
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/pacificheights/community)
-"rPM" = (
-/turf/open/misc/grass,
-/area/vtm/planetgeneration/woodland)
 "rPX" = (
 /obj/structure/flora/tree/vamp/pine,
 /obj/effect/mine/stick,
@@ -87911,6 +87921,8 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/park_ranger,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
 "uoC" = (
@@ -93397,6 +93409,11 @@
 	},
 /turf/open/floor/carpet/orange,
 /area/vtm/interior/apartment)
+"vIM" = (
+/obj/effect/decal/wallpaper/stone/low/tilt,
+/obj/effect/decal/shadow,
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "vIN" = (
 /obj/structure/chair/office/darkpack/green{
 	dir = 1
@@ -98060,13 +98077,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
-"wJA" = (
-/obj/structure/flora/rock/darkpack_big{
-	pixel_y = -6;
-	pixel_x = 17
-	},
-/turf/open/misc/grass,
-/area/vtm/outside/forest)
 "wJB" = (
 /obj/effect/mapping_helpers/door/lock_difficulty/two,
 /obj/effect/turf_decal/siding/grey{
@@ -100275,7 +100285,7 @@
 	},
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/wyld/caern/bawn)
 "xkK" = (
@@ -101520,6 +101530,11 @@
 "xAr" = (
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/chantry/basement)
+"xAx" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/siding/wood/dark,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/murdercabin)
 "xAD" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
@@ -102967,6 +102982,13 @@
 /obj/structure/platform/lowwall/city,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/laundromat)
+"xRX" = (
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/structure/flora/bush/flowers_pp,
+/obj/effect/spawner/random/stray_animal,
+/turf/open/misc/grass,
+/area/vtm/outside/forest)
 "xRY" = (
 /obj/structure/arc,
 /obj/effect/turf_decal/bordur,
@@ -103546,12 +103568,6 @@
 /obj/machinery/light/blacklight/directional/north,
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/strip)
-"xZG" = (
-/mob/living/basic/deer,
-/obj/structure/flora/bush/flowers_yw,
-/obj/structure/flora/bush/flowers_pp,
-/turf/open/misc/grass,
-/area/vtm/outside/forest)
 "xZK" = (
 /obj/effect/turf_decal/darkpack/cave{
 	dir = 6
@@ -103755,6 +103771,7 @@
 /area/vtm/interior)
 "ycm" = (
 /obj/structure/bonfire/dense,
+/obj/effect/turf_decal/siding/wood/dark/corner,
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
 "yco" = (
@@ -292548,7 +292565,7 @@ sWS
 cJF
 cJF
 cJF
-wJA
+ipc
 cJF
 cJF
 cJF
@@ -298281,7 +298298,7 @@ cJF
 thN
 sBz
 cJF
-rPM
+cJF
 fij
 aqb
 aqb
@@ -298342,7 +298359,7 @@ cJF
 bqK
 opz
 fij
-kLs
+sWS
 sWS
 sWS
 pEJ
@@ -298484,8 +298501,8 @@ vPL
 sBz
 hcv
 cJF
-aIh
-rPM
+mPm
+ule
 hcv
 aqb
 aqb
@@ -299010,7 +299027,7 @@ vUJ
 viQ
 ksL
 baE
-agm
+eQi
 gIJ
 gIJ
 uaA
@@ -299901,7 +299918,7 @@ hcv
 bBf
 hcv
 gMz
-qbH
+rhG
 fij
 tYy
 bBf
@@ -300520,8 +300537,8 @@ bBf
 hcv
 vPL
 jRO
-ule
-bVg
+cJF
+sBP
 onO
 gIG
 mIp
@@ -300721,7 +300738,7 @@ wVV
 cJF
 rhG
 bBf
-onO
+cJF
 mIp
 qtc
 fij
@@ -300917,7 +300934,7 @@ mIp
 vPL
 cJF
 cJF
-hAZ
+dkl
 bqK
 gCc
 onO
@@ -300932,7 +300949,7 @@ gMz
 hcv
 cJF
 hcv
-xZG
+gIG
 cJF
 cJF
 cJF
@@ -301746,7 +301763,7 @@ okT
 cJF
 eLd
 wVV
-cJF
+onO
 hcv
 tYy
 wNv
@@ -301935,7 +301952,7 @@ cJF
 hcv
 cJF
 sBz
-onO
+cJF
 cJF
 fij
 mPm
@@ -303160,7 +303177,7 @@ sBz
 rfl
 gMz
 cJF
-xZG
+gIG
 cJF
 hcv
 cJF
@@ -303979,7 +303996,7 @@ cJF
 hcv
 gMz
 gIG
-onO
+cJF
 cJF
 vPL
 vPL
@@ -304186,7 +304203,7 @@ mPm
 cJF
 cJF
 tYy
-onO
+cJF
 mPm
 cJF
 cJF
@@ -306675,7 +306692,7 @@ ePE
 ePE
 lsR
 gmE
-jrB
+sWS
 sWS
 sWS
 sWS
@@ -306825,7 +306842,7 @@ aqb
 aqb
 aqb
 cLr
-cLr
+oVL
 aqb
 cJF
 cJF
@@ -306877,7 +306894,7 @@ jPu
 wLx
 vre
 ePE
-vkY
+kKX
 nTp
 jrB
 sWS
@@ -307030,7 +307047,7 @@ aqb
 aqb
 aqb
 cLr
-cLr
+oVL
 cLr
 aqb
 aqb
@@ -307082,7 +307099,7 @@ kVe
 kVe
 ePE
 vkY
-nTp
+xAx
 jrB
 uqd
 kLs
@@ -307234,10 +307251,10 @@ aqb
 aqb
 aqb
 aqb
+atR
+oVL
 cLr
-cLr
-cLr
-cLr
+atR
 cLr
 cLr
 cJF
@@ -307286,7 +307303,7 @@ vkY
 kVe
 sNT
 vkY
-nTp
+xAx
 jrB
 uqd
 sWS
@@ -307440,11 +307457,11 @@ aqb
 aqb
 aqb
 cLr
+atR
+oVL
+oVL
 cLr
-cLr
-cLr
-cLr
-cLr
+oVL
 aqb
 cJF
 rTI
@@ -307459,7 +307476,7 @@ hOU
 cJF
 cnp
 wVV
-pQr
+xRX
 gCc
 rfl
 gVb
@@ -307646,10 +307663,10 @@ aqb
 aqb
 cLr
 cLr
-cLr
-cLr
-cLr
-cLr
+oVL
+atR
+atR
+oVL
 aqb
 aqb
 cJF
@@ -307694,7 +307711,7 @@ vkY
 vkY
 vJy
 vkY
-nTp
+xAx
 jrB
 kLs
 sWS
@@ -307850,13 +307867,13 @@ aqb
 aqb
 aqb
 cLr
+oVL
+atR
+oVL
+oVL
+atR
 cLr
-cLr
-cLr
-cLr
-cLr
-cLr
-cLr
+oVL
 cLr
 cLr
 sLQ
@@ -307897,9 +307914,9 @@ ibc
 iiW
 kAx
 ePE
-vkY
-nTp
-jrB
+mTt
+fIC
+vIM
 sWS
 sWS
 hcv
@@ -308056,10 +308073,10 @@ aqb
 aqb
 aqb
 cLr
-cLr
-cLr
-cLr
-cLr
+oVL
+atR
+oVL
+oVL
 cLr
 aqb
 aqb
@@ -308103,7 +308120,7 @@ ePE
 ePE
 rwa
 nzo
-jrB
+sWS
 sWS
 sWS
 hcv
@@ -308141,7 +308158,7 @@ pEJ
 uGj
 vWF
 oyI
-oyI
+uol
 vWF
 oyI
 wzA
@@ -308262,7 +308279,7 @@ aqb
 aqb
 aqb
 cLr
-cLr
+atR
 aqb
 aqb
 aqb
@@ -309641,7 +309658,7 @@ oyI
 vWF
 oyI
 oyI
-oyI
+uol
 otS
 sWS
 qqR
