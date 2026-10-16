@@ -21746,6 +21746,10 @@
 /obj/structure/sink/directional/south,
 /turf/open/floor/city/gummaguts,
 /area/vtm/westfield_mall/interior)
+"fbU" = (
+/obj/effect/landmark/start/darkpack/forest_wolves/guardian,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/wyld/caern)
 "fbY" = (
 /turf/closed/wall/vampwall/market,
 /area/vtm/interior/sewer)
@@ -283792,7 +283796,7 @@ viV
 jjj
 mKg
 mKg
-epG
+fbU
 epG
 epG
 wxY
