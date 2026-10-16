@@ -55980,6 +55980,9 @@
 "mXA" = (
 /obj/structure/railing/wooden_fence,
 /obj/effect/decal/garou_glyph/sept_of_western_eye,
+/obj/effect/decal/garou_glyph/caern,
+/obj/effect/decal/garou_glyph/children_of_gaia,
+/obj/effect/decal/garou_glyph/ghost_council,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
 "mXB" = (
@@ -56902,7 +56905,8 @@
 /area/vtm/interior/sewer/nosferatu_warren)
 "njI" = (
 /obj/structure/railing/wooden_fence,
-/obj/effect/decal/garou_glyph/horned_serpent,
+/obj/effect/decal/garou_glyph/totem,
+/obj/effect/decal/garou_glyph/spirit,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
 "njK" = (
