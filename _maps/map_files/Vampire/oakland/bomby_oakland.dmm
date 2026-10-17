@@ -71997,13 +71997,6 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/shop)
-"qDr" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 8
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/wyld/caern)
 "qDv" = (
 /obj/structure/chair/comfy/darkpack/red,
 /obj/machinery/sprinkler/area_managed,
@@ -102738,11 +102731,10 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
 "xOs" = (
-/obj/structure/vampfence/rich,
 /obj/structure/spacevine{
 	can_spread = 0
 	},
-/turf/open/floor/plating/rough/cave,
+/turf/closed/wall/vampwall/rock,
 /area/vtm/interior/wyld/caern/bawn)
 "xOE" = (
 /obj/effect/turf_decal/asphaltline/alt{
@@ -285024,8 +285016,8 @@ gwX
 dwe
 dwe
 jjj
-dwe
-qDr
+kOK
+mKg
 ohg
 lnt
 lnt
@@ -285228,7 +285220,7 @@ dwe
 dwe
 epG
 jjj
-kOK
+mKg
 mKg
 mKg
 cxe
