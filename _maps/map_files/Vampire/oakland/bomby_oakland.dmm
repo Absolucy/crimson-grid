@@ -39975,8 +39975,8 @@
 	desc = "Some type of grain. Seems to be growing still."
 	},
 /obj/structure/flora/grass/short/style_4{
-	desc = "Looks like some sort of grain is growing here.";
-	name = "crops"
+	desc = "Looks like some corn is growing here.";
+	name = "growning corn"
 	},
 /turf/open/misc/sandy_dirt,
 /area/vtm/outside/forest)
@@ -44367,8 +44367,8 @@
 	desc = "Some type of grain. Seems to be growing still."
 	},
 /obj/structure/flora/grass/short/style_4{
-	desc = "Looks like some sort of grain is growing here.";
-	name = "crops"
+	desc = "Looks like some corn is growing here.";
+	name = "growning corn"
 	},
 /turf/open/misc/grass,
 /area/vtm/outside/forest)
@@ -48001,8 +48001,8 @@
 	desc = "Some type of grain. Seems to be growing still."
 	},
 /obj/structure/flora/grass/short/style_4{
-	desc = "Looks like some sort of grain is growing here.";
-	name = "crops"
+	desc = "Looks like some corn is growing here.";
+	name = "growning corn"
 	},
 /turf/open/misc/sandy_dirt,
 /area/vtm/outside/forest)
@@ -61190,8 +61190,8 @@
 /area/vtm/interior/bianchiBank)
 "ofH" = (
 /obj/structure/flora/grass/short/style_4{
-	desc = "Looks like some sort of grain is growing here.";
-	name = "crops"
+	desc = "Looks like some corn is growing here.";
+	name = "growning corn"
 	},
 /turf/open/misc/sandy_dirt,
 /area/vtm/outside/forest)
