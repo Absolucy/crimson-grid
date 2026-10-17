@@ -12167,7 +12167,6 @@
 /obj/structure/railing/wooden_fence,
 /obj/structure/flora/bush/sparsegrass/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/landmark/teleport_mark/wyld,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
 "cPE" = (
