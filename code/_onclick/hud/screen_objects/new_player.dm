@@ -699,7 +699,7 @@
 			[round_timestamp()] in<br />"
 		new_maptext += "</span>"
 	else
-		if(hud.mymob.client?.holder)
+		if(hud.mymob?.client?.holder)
 			new_maptext = "<span style='text-align: center; vertical-align: middle'>Starting in [time_remaining_str()]<br /> \
 				[LAZYLEN(GLOB.clients)] player\s<br /> \
 				[SSticker.totalPlayersReady] players ready<br /> \
