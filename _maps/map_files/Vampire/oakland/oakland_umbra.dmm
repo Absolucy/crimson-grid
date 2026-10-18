@@ -3828,7 +3828,7 @@
 "WY" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_pp,
-/obj/transfer_point_vamp/umbral/exit{
+/obj/transfer_point_vamp/umbral{
 	id = 702
 	},
 /turf/open/misc/grass,
