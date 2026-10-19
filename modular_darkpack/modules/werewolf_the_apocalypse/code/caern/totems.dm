@@ -235,7 +235,7 @@
 
 /obj/structure/werewolf_totem/generic/wyld
 	light_color = "#81ff4f"
-	friendly_tribes = TRIBE_LIST_WYLD
+	friendly_tribes = TRIBE_LIST_GAIA
 
 /obj/structure/werewolf_totem/generic/weaver
 	icon_state = "glassw"
