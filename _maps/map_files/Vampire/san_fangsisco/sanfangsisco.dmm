@@ -23137,7 +23137,6 @@
 /area/vtm/interior/clinic)
 "fxk" = (
 /obj/structure/chair/darkpack,
-/obj/structure/chair/darkpack,
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 6
 	},
