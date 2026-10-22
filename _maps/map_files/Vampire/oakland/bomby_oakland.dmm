@@ -2527,7 +2527,7 @@
 "aFf" = (
 /obj/effect/realistic_fog/dense/strong,
 /turf/open/floor/plating/rough,
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "aFl" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2{
 	pixel_y = 24
@@ -4038,7 +4038,6 @@
 /obj/structure/chair/office/darkpack/green{
 	dir = 4
 	},
-/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/pantry)
 "aYL" = (
@@ -14544,6 +14543,18 @@
 /obj/item/storage/backpack/duffelbag,
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/giovanni)
+"dtk" = (
+/obj/machinery/hydroponics/soil/rich,
+/obj/item/shovel/spade{
+	pixel_y = 5;
+	pixel_x = 4
+	},
+/obj/item/cultivator{
+	pixel_y = 7;
+	pixel_x = -5
+	},
+/turf/open/misc/dirt,
+/area/vtm/interior/wyld/caern)
 "dtm" = (
 /obj/effect/decal/wallpaper/grey/low,
 /obj/structure/platform/lowwall/junk/alt/window,
@@ -20221,6 +20232,14 @@
 /obj/machinery/light/prince/directional/north,
 /turf/open/floor/city/factory,
 /area/vtm/interior/setite)
+"eLp" = (
+/obj/machinery/hydroponics/soil/rich,
+/obj/item/secateurs{
+	pixel_x = 16;
+	pixel_y = 6
+	},
+/turf/open/misc/dirt,
+/area/vtm/interior/wyld/caern)
 "eLr" = (
 /obj/structure/stairs/east,
 /obj/structure/railing{
@@ -28192,7 +28211,6 @@
 	dir = 1
 	},
 /obj/structure/chair/stool/bar/darkpack/green,
-/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/cog/pantry)
 "gDs" = (
@@ -46974,6 +46992,9 @@
 /obj/effect/turf_decal/siding/grey/inner_corner,
 /turf/open/floor/city/circled,
 /area/vtm/interior/shop)
+"kUh" = (
+/turf/open/floor/plating/stone,
+/area/vtm/interior/wyld/caern/bawn)
 "kUp" = (
 /obj/structure/hedge,
 /turf/open/floor/wood/smooth/old,
@@ -47184,6 +47205,10 @@
 /obj/structure/flora/bush/lavendergrass,
 /turf/open/misc/grass/nosmooth,
 /area/vtm/interior/jazzclub)
+"kWV" = (
+/obj/structure/flora/rock/stalagmite,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/wyld/caern/bawn)
 "kXh" = (
 /obj/item/clothing/head/vampire/hardhat{
 	pixel_x = -6;
@@ -48292,6 +48317,14 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/grass,
 /area/vtm/outside/forest)
+"ljd" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/item/reagent_containers/cup/watering_can/metal{
+	pixel_y = 19;
+	pixel_x = -10
+	},
+/turf/open/misc/grass,
+/area/vtm/interior/wyld/caern)
 "ljs" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/city/plating_mono,
@@ -55106,7 +55139,7 @@
 /turf/open/floor/plating/rough/cave{
 	icon_state = "stone8"
 	},
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "mPm" = (
 /obj/structure/flora/tree/vamp/pine,
 /turf/open/misc/grass,
@@ -56682,7 +56715,7 @@
 "nhj" = (
 /obj/effect/realistic_fog/dense,
 /turf/open/floor/plating/stone,
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "nhq" = (
 /obj/structure/chair/pew/right,
 /obj/machinery/light/cold/directional/north,
@@ -56725,6 +56758,10 @@
 	},
 /turf/open/floor/city/factory,
 /area/vtm/interior/church/staff)
+"nhP" = (
+/obj/structure/flora/rock/stalagmite,
+/turf/open/floor/plating/stone,
+/area/vtm/interior/wyld/caern/bawn)
 "nhU" = (
 /obj/structure/chair/office/darkpack/blue{
 	dir = 8
@@ -59976,6 +60013,12 @@
 /obj/effect/landmark/navigate_destination,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/endron_facility)
+"nUl" = (
+/obj/structure/flora/rock/stalagmite,
+/turf/open/floor/plating/rough/cave{
+	icon_state = "stone8"
+	},
+/area/vtm/interior/wyld/caern/bawn)
 "nUs" = (
 /obj/structure/vampfence/rich{
 	dir = 4;
@@ -72686,6 +72729,8 @@
 /obj/item/seeds/greenbean,
 /obj/item/seeds/pumpkin,
 /obj/item/seeds/pumpkin,
+/obj/item/seeds/berry,
+/obj/item/seeds/berry,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
 "qNc" = (
@@ -75212,7 +75257,7 @@
 "rsF" = (
 /obj/effect/realistic_fog/dense/strong,
 /turf/open/floor/plating/stone,
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "rsM" = (
 /obj/structure/table/wood/billiard{
 	pixel_y = -7
@@ -77136,7 +77181,7 @@
 "rQO" = (
 /obj/effect/decal/garou_glyph/conceal,
 /turf/open/floor/plating/stone,
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "rQU" = (
 /obj/effect/decal/wallpaper/grey,
 /obj/effect/decal/wallpaper/papers/one{
@@ -82345,7 +82390,7 @@
 "tcC" = (
 /obj/effect/realistic_fog/dense,
 /turf/open/floor/plating/rough/cave,
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "tcI" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 8
@@ -90642,9 +90687,19 @@
 /area/vtm/interior/endron_facility/restricted)
 "uXt" = (
 /obj/structure/table/wood,
-/obj/item/knife/vamp,
+/obj/item/knife/vamp{
+	pixel_y = 9
+	},
 /obj/item/knife/vamp{
 	pixel_y = 4
+	},
+/obj/item/fishing_rod{
+	pixel_x = 12;
+	pixel_y = -2
+	},
+/obj/item/fishing_rod{
+	pixel_x = 6;
+	pixel_y = -2
 	},
 /turf/open/floor/plating/rough/cave{
 	icon_state = "stone8"
@@ -92993,6 +93048,10 @@
 /obj/machinery/light/red/directional/north,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/millennium_tower/f3)
+"vDI" = (
+/obj/effect/landmark/bawn_entrance/gaia,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/caves)
 "vDJ" = (
 /obj/structure/chair/comfy/darkpack/dark{
 	dir = 8
@@ -93072,7 +93131,7 @@
 "vEU" = (
 /obj/structure/flora/rock/pile/darkpack,
 /turf/open/floor/plating/stone,
-/area/vtm/interior/caves)
+/area/vtm/interior/wyld/caern/bawn)
 "vEW" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/city/factory,
@@ -93087,6 +93146,11 @@
 /obj/machinery/computer/security/telescreen/entertainment/directional/north,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
+"vFd" = (
+/turf/open/floor/plating/rough/cave{
+	icon_state = "stone8"
+	},
+/area/vtm/interior/wyld/caern/bawn)
 "vFf" = (
 /turf/open/water/vamp_sewer/border,
 /area/vtm/interior/sewer)
@@ -93928,6 +93992,13 @@
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/carpet/darkpack/blacksilver,
 /area/vtm/westfield_mall/interior)
+"vPO" = (
+/obj/structure/spacevine{
+	can_spread = 0;
+	pixel_y = 26
+	},
+/turf/open/floor/plating/stone,
+/area/vtm/interior/wyld/caern/bawn)
 "vPP" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -98988,7 +99059,7 @@
 "wVm" = (
 /obj/effect/realistic_fog/dense,
 /obj/structure/stone_tile/surrounding,
-/obj/structure/werewolf_totem/generic/wyld,
+/obj/structure/werewolf_totem/generic/gaia,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
 "wVu" = (
@@ -101486,6 +101557,9 @@
 /obj/structure/vampdoor/old,
 /turf/open/floor/city/plating,
 /area/vtm/interior/shop)
+"xyA" = (
+/turf/open/floor/plating/rough,
+/area/vtm/interior/wyld/caern/bawn)
 "xyB" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -103258,6 +103332,12 @@
 /obj/structure/railing/corner,
 /turf/open/misc/grass/nosmooth,
 /area/vtm/interior/millennium_tower/f3)
+"xUC" = (
+/obj/structure/flora/rock/pile/darkpack,
+/turf/open/floor/plating/rough/cave{
+	icon_state = "stone8"
+	},
+/area/vtm/interior/wyld/caern/bawn)
 "xUD" = (
 /obj/structure/flora/bush/reed/style_random{
 	pixel_x = 15;
@@ -103385,6 +103465,15 @@
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
+"xVO" = (
+/obj/structure/spacevine{
+	can_spread = 0;
+	pixel_y = 26
+	},
+/turf/open/floor/plating/rough/cave{
+	icon_state = "stone8"
+	},
+/area/vtm/interior/wyld/caern/bawn)
 "xVP" = (
 /obj/effect/turf_decal/asphaltline/alt{
 	dir = 8
@@ -284047,12 +284136,12 @@ mae
 mae
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
+auU
 auU
 auU
 auU
@@ -284250,15 +284339,15 @@ mae
 mae
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
 auU
 auU
 uvs
@@ -284453,17 +284542,17 @@ syL
 mae
 mae
 mae
-aqb
-aqb
-aqb
-hFk
-oiE
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+auU
+auU
+nUl
+vFd
+auU
+auU
+auU
+auU
+auU
+auU
 auU
 auU
 uvs
@@ -284657,18 +284746,18 @@ mae
 mae
 mae
 mae
-aqb
-aqb
-oiE
-atR
-oiE
-atR
-atR
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+auU
+vFd
+kUh
+vFd
+kUh
+kUh
+auU
+auU
+auU
+auU
+auU
 auU
 auU
 uvs
@@ -284862,18 +284951,18 @@ req
 iht
 xdb
 wkG
-lus
-atR
-oVL
+xVO
+kUh
+xyA
 tcC
-oVL
-oiE
-atR
-atR
-aqb
-aqb
-aqb
-aqb
+xyA
+vFd
+kUh
+kUh
+auU
+auU
+auU
+auU
 auU
 uvs
 uvs
@@ -285066,18 +285155,18 @@ iht
 xdb
 bLK
 mae
-wIq
-oiE
-oiE
-oiE
-oiE
-oiE
-oiE
-atR
-oVL
-aqb
-aqb
-aqb
+vPO
+vFd
+vFd
+vFd
+vFd
+vFd
+vFd
+kUh
+xyA
+auU
+auU
+auU
 auU
 auU
 uvs
@@ -285253,7 +285342,7 @@ mae
 mae
 mae
 oFP
-oFP
+eLp
 oFP
 qMX
 rnK
@@ -285271,18 +285360,18 @@ xdb
 mae
 mae
 mae
-aqb
-aqb
-aqb
-xYN
-oVL
-oVL
-oiE
-oVL
-oiE
-aqb
-aqb
-aqb
+auU
+auU
+auU
+nhP
+xyA
+xyA
+vFd
+xyA
+vFd
+auU
+auU
+auU
 auU
 uvs
 uvs
@@ -285456,8 +285545,8 @@ auU
 mae
 mae
 kgz
-oFP
-kaT
+dtk
+ljd
 kaT
 fMT
 tfR
@@ -285475,18 +285564,18 @@ npQ
 mae
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-atR
-atR
-oVL
+auU
+auU
+auU
+auU
+auU
+kUh
+kUh
+xyA
 aFf
-hFk
-aqb
-aqb
+nUl
+auU
+auU
 auU
 uvs
 uvs
@@ -285678,19 +285767,19 @@ uDV
 npQ
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-lus
-oiE
-atR
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+xVO
+vFd
+kUh
+auU
+auU
 auU
 uvs
 uvs
@@ -285881,20 +285970,20 @@ xdb
 uXt
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-atR
-atR
-atR
-oiE
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+kUh
+kUh
+kUh
+vFd
+auU
+auU
 auU
 uvs
 uvs
@@ -286085,20 +286174,20 @@ cbo
 mae
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-wIq
-oiE
-atR
-oVL
-oiE
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+vPO
+vFd
+kUh
+xyA
+vFd
+auU
+auU
 auU
 uvs
 uvs
@@ -286290,19 +286379,19 @@ mae
 mae
 mae
 mae
-aqb
-aqb
-aqb
-aqb
-aqb
-lus
-atR
-atR
-atR
-oVL
-aqb
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
+xVO
+kUh
+kUh
+kUh
+xyA
+auU
+auU
+auU
 auU
 uvs
 uvs
@@ -286500,12 +286589,12 @@ auU
 auU
 auU
 mPe
-atR
-aqb
-aqb
-aqb
-aqb
-aqb
+kUh
+auU
+auU
+auU
+auU
+auU
 auU
 auU
 uvs
@@ -286699,8 +286788,8 @@ kGI
 mae
 mae
 auU
-aqb
-aqb
+auU
+auU
 atR
 auU
 dgb
@@ -286903,7 +286992,7 @@ fJO
 mae
 mae
 auU
-aqb
+auU
 xYN
 atR
 oVL
@@ -287107,8 +287196,8 @@ hsL
 mae
 mae
 auU
-aqb
-aqb
+auU
+auU
 lus
 atR
 oVL
@@ -287311,8 +287400,8 @@ dmv
 mae
 mae
 auU
-aqb
-aqb
+auU
+auU
 aqb
 oiE
 atR
@@ -287515,8 +287604,8 @@ dAV
 mae
 mae
 auU
-aqb
-aqb
+auU
+auU
 aqb
 aqb
 aqb
@@ -287719,8 +287808,8 @@ mae
 mae
 mae
 auU
-aqb
-aqb
+auU
+auU
 aqb
 aqb
 aqb
@@ -287923,8 +288012,8 @@ mae
 mae
 auU
 auU
-aqb
-aqb
+auU
+auU
 aqb
 aqb
 aqb
@@ -288106,16 +288195,16 @@ uvs
 uvs
 auU
 auU
-uvs
-uvs
-uvs
-aqb
-aqb
-aqb
-xYN
-atR
-oVL
-atR
+auU
+auU
+auU
+auU
+auU
+auU
+nhP
+kUh
+xyA
+kUh
 mae
 mae
 mae
@@ -288126,9 +288215,9 @@ mae
 mae
 auU
 auU
-aqb
-aqb
-aqb
+auU
+auU
+auU
 aqb
 aqb
 aqb
@@ -288310,29 +288399,29 @@ uvs
 uvs
 uvs
 auU
-uvs
-uvs
-aqb
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
 vEU
-atR
-atR
-atR
-atR
-aqb
-auU
-mae
-mae
-mae
-mae
-mae
+kUh
+kUh
+kUh
+kUh
 auU
 auU
-aqb
-aqb
-aqb
-aqb
+mae
+mae
+mae
+mae
+mae
+auU
+auU
+auU
+auU
+auU
+auU
 aqb
 aqb
 aqb
@@ -288514,15 +288603,15 @@ uvs
 uvs
 uvs
 auU
-uvs
-aqb
-aqb
-aqb
-lus
-oiE
-atR
+auU
+auU
+auU
+auU
+xVO
+vFd
+kUh
 nhj
-atR
+kUh
 auU
 auU
 auU
@@ -288532,11 +288621,11 @@ auU
 auU
 auU
 auU
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
 cJF
 cJF
 veu
@@ -288718,25 +288807,25 @@ uvs
 uvs
 uvs
 auU
-aqb
-aqb
-aqb
-xYN
-sxt
-atR
-oVL
-atR
 auU
 auU
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+nhP
+xUC
+kUh
+xyA
+kUh
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
 cJF
 cJF
 lUk
@@ -288922,22 +289011,22 @@ uvs
 uvs
 uvs
 auU
-aqb
-aqb
-aqb
-lus
-atR
-oVL
-atR
 auU
 auU
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+xVO
+kUh
+xyA
+kUh
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
 cJF
 cJF
 cJF
@@ -289126,22 +289215,22 @@ uvs
 uvs
 aqb
 auU
-aqb
-aqb
-vEU
-oVL
-rsF
-oVL
-xTh
 auU
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+vEU
+xyA
+rsF
+xyA
+kWV
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
+auU
 pwe
 pgS
 pgS
@@ -289330,19 +289419,19 @@ uvs
 aqb
 aqb
 auU
-xYN
-oVL
-atR
-atR
-atR
+nhP
+xyA
+kUh
+kUh
+kUh
 auU
 auU
 auU
-aqb
-aqb
-aqb
-aqb
-aqb
+auU
+auU
+auU
+auU
+auU
 cJF
 dOB
 dOB
@@ -289534,10 +289623,10 @@ aqb
 aqb
 aqb
 auU
-lus
-atR
-atR
-atR
+xVO
+kUh
+kUh
+kUh
 auU
 auU
 aqb
@@ -289738,9 +289827,9 @@ aqb
 aqb
 aqb
 auU
-atR
-atR
-oiE
+kUh
+kUh
+vFd
 auU
 auU
 aqb
@@ -289942,8 +290031,8 @@ atR
 sxt
 aqb
 auU
-atR
-oVL
+kUh
+xyA
 auU
 auU
 aqb
@@ -290147,7 +290236,7 @@ atR
 atR
 dgb
 rQO
-oVL
+xyA
 auU
 aqb
 aqb
@@ -309131,7 +309220,7 @@ uvs
 uvs
 aqb
 aqb
-oVL
+vDI
 cLr
 cLr
 atR

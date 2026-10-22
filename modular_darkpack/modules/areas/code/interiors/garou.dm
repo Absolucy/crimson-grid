@@ -34,6 +34,6 @@
 
 /area/vtm/interior/wyld/caern/bawn/LateInitialize()
 	. = ..()
-	AddComponent(/datum/component/bawn_area, /obj/structure/werewolf_totem/generic/wyld)
+	AddComponent(/datum/component/bawn_area, /obj/structure/werewolf_totem/generic/gaia)
 
 // CRIMSON EDITT ADD END - Oakland Forest
