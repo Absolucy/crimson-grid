@@ -14871,7 +14871,7 @@
 /area/vtm/interior/strip)
 "dxH" = (
 /obj/structure/glowshroom/shadowshroom,
-/turf/open/floor/plating/rough/cave,
+/turf/open/floor/plating/stone,
 /area/vtm/interior/caves)
 "dxK" = (
 /obj/structure/table,
@@ -18338,6 +18338,14 @@
 	},
 /turf/open/floor/city/gummaguts,
 /area/vtm/westfield_mall/interior)
+"elo" = (
+/obj/structure/mannequin/wood{
+	desc = "How did this get here?";
+	pixel_y = -10;
+	pixel_x = -14
+	},
+/turf/open/misc/grass,
+/area/vtm/outside/forest)
 "elr" = (
 /obj/structure/bed,
 /obj/item/bedsheet/chaplain,
@@ -29250,6 +29258,9 @@
 /obj/structure/toilet{
 	dir = 8;
 	pixel_y = 11
+	},
+/obj/structure/mannequin/wood{
+	desc = "How did this get here?"
 	},
 /turf/open/misc/dirt,
 /area/vtm/interior)
@@ -51169,6 +51180,9 @@
 /obj/structure/chair/wood/darkpack/red{
 	dir = 8
 	},
+/obj/structure/mannequin/wood{
+	desc = "How did this get here?"
+	},
 /turf/open/floor/wood/rough,
 /area/vtm/interior)
 "lSP" = (
@@ -54388,6 +54402,15 @@
 "mFi" = (
 /turf/open/floor/city/factory,
 /area/vtm/interior/strip)
+"mFn" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/obj/structure/mannequin/wood{
+	desc = "How did this get here?";
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/turf/open/misc/grass,
+/area/vtm/outside/forest)
 "mFy" = (
 /obj/effect/turf_decal/siding/wideplating/dark,
 /obj/structure/chair/wood/darkpack/red{
@@ -66213,6 +66236,9 @@
 /obj/structure/chair/wood/darkpack/red{
 	pixel_y = 5
 	},
+/obj/structure/mannequin/wood{
+	desc = "How did this get here?"
+	},
 /turf/open/floor/wood/rough,
 /area/vtm/interior)
 "pmr" = (
@@ -67360,6 +67386,9 @@
 "pAf" = (
 /obj/structure/chair/wood/darkpack{
 	dir = 8
+	},
+/obj/structure/mannequin/wood{
+	desc = "How did this get here?"
 	},
 /turf/open/floor/wood/old,
 /area/vtm/interior)
@@ -291145,7 +291174,7 @@ aqb
 aqb
 aqb
 aqb
-bER
+wIq
 cLr
 iCL
 aqb
@@ -291349,11 +291378,11 @@ aqb
 aqb
 aqb
 iCL
+oVL
+atR
+atR
 cLr
-cLr
-cLr
-cLr
-iCL
+sOR
 aqb
 aqb
 oyI
@@ -291552,12 +291581,12 @@ aqb
 aqb
 aqb
 aqb
+oVL
+atR
 cLr
-cLr
-cLr
-cLr
-cLr
-cLr
+atR
+oVL
+atR
 dxH
 aqb
 aqb
@@ -291756,13 +291785,13 @@ cJF
 cJF
 aqb
 bER
-cLr
-cLr
-cLr
-cLr
-cLr
-cLr
-cLr
+atR
+atR
+oVL
+oVL
+atR
+oVL
+atR
 aqb
 aqb
 aqb
@@ -291961,11 +291990,11 @@ pHd
 rze
 cJF
 aqb
-cLr
-cLr
+oVL
+oVL
 cKw
-cLr
-cLr
+oVL
+oVL
 aqb
 aqb
 aqb
@@ -292168,8 +292197,8 @@ mPm
 cJF
 aqb
 aqb
-bER
-iCL
+wIq
+sOR
 aqb
 aqb
 aqb
@@ -305341,7 +305370,7 @@ rkx
 veu
 rze
 cJF
-mPm
+cJF
 fMv
 fMv
 pHd
@@ -306426,7 +306455,7 @@ cJF
 cJF
 cJF
 cJF
-cJF
+elo
 piu
 piu
 luZ
@@ -308740,7 +308769,7 @@ vvV
 kYn
 eQh
 sMZ
-rze
+mFn
 cJF
 anF
 xfQ
