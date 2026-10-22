@@ -2982,6 +2982,10 @@
 /obj/effect/decal/wallpaper/stone/low{
 	pixel_y = 24
 	},
+/obj/item/extinguisher{
+	pixel_y = -3;
+	pixel_x = -6
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/wyld/caern)
 "aKX" = (
@@ -3447,6 +3451,7 @@
 /obj/item/defibrillator/loaded{
 	pixel_x = 6
 	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/wyld/caern)
 "aSg" = (
@@ -18963,6 +18968,10 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
+"evq" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior)
 "evr" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -298581,7 +298590,7 @@ lZk
 xDr
 ejO
 xnY
-gIJ
+evq
 gIJ
 wPr
 lZk
