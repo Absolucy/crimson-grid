@@ -5346,18 +5346,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry)
-"bkx" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/machinery/defibrillator_mount/charging{
-	pixel_y = 30
-	},
-/obj/item/defibrillator/loaded,
-/turf/closed/wall/vampwall/rock,
-/area/vtm/interior/endron_facility/restricted)
 "bkB" = (
 /turf/open/floor/iron/textured_corner{
 	dir = 1
@@ -20078,21 +20066,6 @@
 "eJv" = (
 /obj/structure/flora/coconuts,
 /turf/open/misc/beach/vamp,
-/area/vtm)
-"eJG" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/storage/box/syringes{
-	pixel_x = 1;
-	pixel_y = 8
-	},
-/obj/machinery/light/directional/west,
-/obj/structure/table/countertop/green,
-/obj/item/gun/syringe,
-/turf/open/umbra,
 /area/vtm)
 "eJK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44639,14 +44612,20 @@
 "kMi" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp{
-	pixel_y = 7;
-	pixel_x = -1
+	pixel_y = 14;
+	pixel_x = 12
 	},
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
 	c_tag = "Endron Lab 6";
 	pixel_x = 11;
 	pixel_y = 24
+	},
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/pen{
+	pixel_y = 8
 	},
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
@@ -49004,19 +48983,9 @@
 /turf/open/floor/wood/smooth,
 /area/vtm)
 "lLL" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
-/obj/structure/closet,
-/obj/item/clothing/under/vampire/nurse/nurseb,
-/obj/item/clothing/under/vampire/nurse/nurseb,
-/obj/item/clothing/under/vampire/nurse/nurseb,
-/obj/item/clothing/under/vampire/nurse/nurseb,
 /turf/closed/wall/vampwall/rock,
 /area/vtm/interior/endron_facility/restricted)
 "lLM" = (
@@ -89236,11 +89205,13 @@
 /obj/structure/table,
 /obj/effect/decal/rugs,
 /obj/machinery/light/directional/north,
-/obj/item/paper_bin{
+/obj/item/gun/syringe{
+	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/pen{
-	pixel_y = 8
+/obj/item/storage/box/syringes{
+	pixel_x = 0;
+	pixel_y = 7
 	},
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
@@ -378557,7 +378528,7 @@ tZR
 dLJ
 cVX
 tFB
-eJG
+tFB
 tFB
 tFB
 tFB
@@ -380610,7 +380581,7 @@ dLJ
 dLJ
 dLJ
 dLJ
-bkx
+dLJ
 cVX
 tFB
 tFB
