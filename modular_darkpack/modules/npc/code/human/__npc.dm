@@ -144,7 +144,6 @@
 	GLOB.npc_list -= src
 	GLOB.alive_npc_list -= src
 	SShumannpcpool.currentrun -= src
-	SShumannpcpool.try_repopulate()
 	return ..()
 
 //====================Sticky Item Handling====================
