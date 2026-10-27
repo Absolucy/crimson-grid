@@ -265,7 +265,13 @@
 		return
 
 	// Checks for fire, clearing the stored fire if none is in view
-	afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+	// view() is pricey and there's usually no fire anywhere, so only bother when one's close
+	afraid_of_fire = null
+	for(var/obj/effect/abstract/turf_fire/fire as anything in SSturf_fire.processing)
+		if(fire.z != z || get_dist(src, fire) > DEFAULT_SIGHT_DISTANCE)
+			continue
+		afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+		break
 
 	// Combat behaviour
 	if (danger_source)
