@@ -33,6 +33,7 @@
 	var/is_talking = FALSE
 	COOLDOWN_DECLARE(annoyed_cooldown)
 	COOLDOWN_DECLARE(car_dodge)
+	COOLDOWN_DECLARE(choose_path_cooldown)
 	var/hostile = FALSE
 	var/aggressive = FALSE
 	var/last_antagonised = 0
