@@ -125,10 +125,6 @@
 	can_breed = FALSE
 	pixel_x = -16
 
-/mob/living/basic/pet/cat/protean/puma/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/jumper)
-
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form
 	var/chosen_icon_state
 	var/static/list/shape_colors = list(

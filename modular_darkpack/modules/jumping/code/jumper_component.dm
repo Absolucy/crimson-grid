@@ -16,6 +16,13 @@
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_MOB_CLICKON, PROC_REF(try_jump))
 	RegisterSignal(parent, COMSIG_LIVING_JUMP_PREP_TOGGLE, PROC_REF(toggle_jumping))
+	RegisterSignal(parent, COMSIG_LIVING_SHAPESHIFTED, PROC_REF(on_shapeshifted)) //CRIMSON GRID ADDITION - JUMPING_SHAPESHIFT
+
+//CRIMSON GRID ADDITION START - JUMPING_SHAPESHIFT
+/datum/component/jumper/proc/on_shapeshifted(datum/source, mob/living/shape)
+	SIGNAL_HANDLER
+	shape.AddComponent(/datum/component/jumper)
+//CRIMSON GRID ADDITION END
 
 //Toggles whether a left click will perform a jump.
 //We have this functionality so players without a 3rd mouse button can still jump around.
@@ -118,6 +125,8 @@
 	//CRIMSON GRID EDIT - Tlacique Puma, Jaguar, and Floppa Cat PR
 	if(istype(jumper, /mob/living/basic/pet/cat/protean/puma))
 		adjusted_jump_range *= 3
+	else if(istype(jumper, /mob/living/basic/pet/cat)) //CRIMSON GRID ADDITION - JUMPING_SHAPESHIFT
+		adjusted_jump_range += 2
 
 	var/distance = get_dist(jumper.loc, target)
 	var/turf/adjusted_target = target
@@ -143,12 +152,15 @@
 		log_combat(jumper, adjusted_target, "jumped", addition="from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
 
 	jumper.newtonian_move(get_dir(adjusted_target, jumper))
-	jumper.safe_throw_at(adjusted_target, jumper.throw_range, jumper.throw_speed, jumper, null, null, null, jumper.move_force, spin = FALSE)
+	jumper.safe_throw_at(adjusted_target, max(jumper.throw_range, CEILING(adjusted_jump_range, 1)), jumper.throw_speed, jumper, null, null, null, jumper.move_force, spin = FALSE)
 
 	if(CONFIG_GET(flag/jump_slowdown))
 		jumper.post_jump_slowdown(get_dist(start_T, end_T)*JUMP_SLOWDOWN_MULT)
 
-	COOLDOWN_START(src, jump_cooldown, max(JUMP_DELAY - (0.4 * dexterity) - (1 * athletics), 1))
+	var/jump_cooldown_time = max(JUMP_DELAY - (0.4 * dexterity) - (1 * athletics), 1) //CRIMSON GRID EDIT - JUMPING_SHAPESHIFT - Original: COOLDOWN_START(src, jump_cooldown, max(JUMP_DELAY - (0.4 * dexterity) - (1 * athletics), 1))
+	if(istype(jumper, /mob/living/basic/pet/cat))
+		jump_cooldown_time *= 0.75
+	COOLDOWN_START(src, jump_cooldown, jump_cooldown_time)
 
 	if(CONFIG_GET(flag/jump_slowdown))
 		jumper.add_movespeed_modifier(/datum/movespeed_modifier/post_jump)
