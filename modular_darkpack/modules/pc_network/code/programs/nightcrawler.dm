@@ -42,6 +42,13 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 	cam_screen = new
 	cam_screen.generate_view("pc_nightcrawler_[REF(src)]_map")
 	speakers = new(computer)
+	speakers.set_on(FALSE)
+
+/datum/pc_program/nightcrawler/on_open()
+	speakers.set_on(TRUE)
+
+/datum/pc_program/nightcrawler/on_close()
+	speakers.set_on(FALSE)
 
 /datum/pc_program/nightcrawler/Destroy()
 	QDEL_NULL(cam_screen)
@@ -181,7 +188,7 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 		if("toggle_mute")
 			if(!speakers)
 				return FALSE
-			speakers.toggle_mute()
+			speakers.set_listening(!speakers.should_be_listening)
 			return TRUE
 	return FALSE
 
